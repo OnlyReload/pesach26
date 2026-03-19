@@ -49,7 +49,7 @@
         .hero {
             position: relative;
             text-align: center;
-            padding: 80px 20px 60px;
+            padding: 100px 20px 80px;
             background-image: url('banner.png');
             background-size: cover;
             background-position: center;
@@ -59,10 +59,7 @@
         .hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            inset: 0;
             background: rgba(15, 17, 26, 0.85);
             z-index: 1;
         }
@@ -81,7 +78,7 @@
             padding: 8px 20px;
             border-radius: 30px;
             display: inline-block;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             font-weight: bold;
             font-size: 1.1rem;
             box-shadow: 0 0 15px rgba(255, 0, 85, 0.3);
@@ -93,22 +90,22 @@
             background: linear-gradient(90deg, var(--mc-green), var(--ai-blue));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             text-shadow: 0px 10px 20px rgba(0, 0, 0, 0.8);
         }
 
         .hero p {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             color: #e2e8f0;
             font-weight: 500;
         }
 
-        /* --- כפתורי ניווט מהירים --- */
+        /* --- כפתורי ניווט מהירים (הרשמה למעלה) --- */
         .quick-nav {
             display: flex;
             justify-content: center;
             gap: 15px;
-            margin-top: 25px;
+            margin-top: 30px;
         }
 
         .btn-small {
@@ -117,7 +114,7 @@
             text-decoration: none;
             color: white;
             font-weight: bold;
-            font-size: 1rem;
+            font-size: 1.1rem;
             transition: 0.3s;
             cursor: pointer;
             border: none;
@@ -145,17 +142,17 @@
             flex-wrap: wrap;
             gap: 20px;
             max-width: 1000px;
-            margin: -30px auto 40px;
+            margin: -40px auto 40px;
             position: relative;
             z-index: 10;
         }
 
         .info-item {
             background: #1e2235;
-            padding: 12px 25px;
+            padding: 15px 25px;
             border-radius: 50px;
             font-weight: bold;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
             display: flex;
@@ -282,7 +279,7 @@
         .card-actions {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
             margin-top: 25px;
         }
 
@@ -321,7 +318,8 @@
             padding: 12px;
         }
 
-        .btn:hover {
+        .btn:hover,
+        .hover-scale:hover {
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
@@ -329,7 +327,7 @@
         /* --- אזור תמחור --- */
         .pricing-section {
             max-width: 800px;
-            margin: 60px auto 20px;
+            margin: 40px auto 20px;
             padding: 0 20px;
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -371,16 +369,140 @@
             color: white;
         }
 
+        /* --- אזור דחיפות וכפתורי הרשמה מתחת למחיר --- */
+        .urgency-text {
+            color: var(--gold);
+            font-weight: bold;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            display: block;
+            text-align: center;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .bottom-actions {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+            padding: 0 20px;
+        }
+
         .donation-section {
             text-align: center;
             margin: 30px auto;
             font-size: 1.3rem;
             color: #ff4b4b;
             font-weight: bold;
-            padding-bottom: 40px;
+            padding-bottom: 20px;
         }
 
-        /* --- Payment Overlay (מסך תשלום זוהר) --- */
+        /* --- מה הילדים מקבלים --- */
+        .results-section {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .results-section h2 {
+            font-family: 'Rubik', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #fff;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .result-item {
+            background: #1e2235;
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid #333;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .result-item.mc-result {
+            border: 2px dashed var(--mc-green);
+        }
+
+        .result-item.ai-result {
+            border: 2px dashed var(--ai-blue);
+        }
+
+        .result-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .mc-result h3 {
+            color: #8cf268;
+        }
+
+        .ai-result h3 {
+            color: var(--ai-blue);
+        }
+
+        .result-item p {
+            font-size: 1.1rem;
+            color: #ccc;
+        }
+
+        /* --- אזור מונה מספרים --- */
+        .stats-section {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+        }
+
+        .stat-card {
+            flex: 1;
+            min-width: 200px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px dashed rgba(255, 215, 0, 0.3);
+            padding: 25px 15px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .stat-num {
+            font-size: 3.5rem;
+            font-family: 'Rubik', sans-serif;
+            font-weight: bold;
+            color: var(--gold);
+            margin-bottom: 5px;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+            line-height: 1;
+            display: inline-block;
+        }
+
+        .stat-text {
+            font-size: 1.2rem;
+            color: #e2e8f0;
+            font-weight: 500;
+        }
+
+        /* --- אזור סיום (מתלבטים) --- */
+        .hesitating-section {
+            text-align: center;
+            padding: 50px 20px;
+            background: #16192b;
+            border-top: 2px dashed #333;
+            margin-top: 20px;
+        }
+
+        /* --- Payment Overlay --- */
         .overlay {
             position: fixed;
             inset: 0;
@@ -453,25 +575,17 @@
             font-size: 0.9rem;
         }
 
-        /* --- Mobile Responsiveness --- */
+        /* --- Mobile --- */
         @media (max-width: 900px) {
 
             .courses-container,
-            .pricing-section {
+            .pricing-section,
+            .results-grid {
                 grid-template-columns: 1fr;
             }
 
             .hero h1 {
-                font-size: 2.3rem;
-            }
-
-            .hero p {
-                font-size: 1.2rem;
-            }
-
-            .top-donation-badge {
-                font-size: 0.95rem;
-                padding: 6px 15px;
+                font-size: 2.5rem;
             }
 
             .info-bar {
@@ -493,6 +607,15 @@
             .btn-small {
                 width: 100%;
                 max-width: 300px;
+            }
+
+            .bottom-actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .bottom-actions .btn {
+                width: 100%;
             }
         }
     </style>
@@ -543,8 +666,8 @@
             <div class="card-actions">
                 <button class="btn btn-mc" onclick="openPayment('מיינקראפט', '239', '972508880080')">להרשמה ותשלום
                     (₪239)</button>
-                <a href="https://wa.me/972508880080?text=היי, יש לי שאלה לגבי קורס מיינקראפט" target="_blank"
-                    class="btn btn-wa-card">וואטסאפ לשאלות</a>
+                <a href="https://wa.me/972508880080?text=היי, יש לי שאלה לגבי קורס מיינקראפט"
+                    class="btn btn-small-card btn-mc">וואטסאפ לשאלות</a>
             </div>
         </div>
 
@@ -564,8 +687,8 @@
             <div class="card-actions">
                 <button class="btn btn-ai" onclick="openPayment('בינה מלאכותית', '239', '972544470244')">להרשמה ותשלום
                     (₪239)</button>
-                <a href="https://wa.me/972544470244?text=היי, יש לי שאלה לגבי קורס ה-AI" target="_blank"
-                    class="btn btn-wa-card">וואטסאפ לשאלות</a>
+                <a href="https://wa.me/972544470244?text=היי, יש לי שאלה לגבי קורס ה-AI"
+                    class="btn btn-small-card btn-ai">וואטסאפ לשאלות</a>
             </div>
         </div>
     </section>
@@ -582,8 +705,62 @@
         </div>
     </section>
 
+    <div class="fade-in" style="text-align: center; margin-bottom: 30px;">
+        <span class="urgency-text">שימו לב: נותרו מקומות בודדים למחזור הקרוב! 🚨</span>
+    </div>
+
+    <div class="bottom-actions fade-in">
+        <button class="btn btn-mc" style="width: auto; padding: 12px 30px;"
+            onclick="openPayment('מיינקראפט', '239', '972508880080')">הרשמה מהירה למיינקראפט</button>
+        <button class="btn btn-ai" style="width: auto; padding: 12px 30px;"
+            onclick="openPayment('בינה מלאכותית', '239', '972544470244')">הרשמה מהירה לבינה מלאכותית</button>
+    </div>
+
     <div class="donation-section fade-in">
         ❤️ 10% מההכנסות יתרמו לחיילי צה"ל ❤️
+    </div>
+
+    <section class="results-section fade-in">
+        <h2>מה הילדים מקבלים כתוצאה מהחוג?</h2>
+        <div class="results-grid">
+            <div class="result-item mc-result">
+                <h3>פרויקט תכנות במיינקראפט 🚀</h3>
+                <p>הילדים יבנו פרויקט תכנות ייחודי משלהם בתוך המשחק, המשלב את כל מונחי התכנות שלמדו.</p>
+            </div>
+            <div class="result-item ai-result">
+                <h3>יצירת AI ומוזיקה מקורית 🎨</h3>
+                <p>כל ילד ייצור סרטון AI מרהיב, תמונות אמנותיות ואפילו שיר מקורי בעזרת הכלים שלמדו.</p>
+            </div>
+            <div class="result-item" style="grid-column: 1 / -1; border: 2px solid var(--gold);">
+                <h3 style="color: var(--gold);">תעודת מוסמך תכנות/AI יוקרתית 🎓</h3>
+                <p>כל משתתף יקבל תעודת סיום מעוצבת ודיגיטלית, המאשרת את הישגיו וידיעותיו.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="stats-section fade-in" id="stats">
+        <div class="stat-card">
+            <div class="stat-num" data-target="5" data-suffix="+">0</div>
+            <div class="stat-text">שנות ניסיון בהדרכה</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-num" data-target="6" data-suffix="">0</div>
+            <div class="stat-text">מחזורים בהצלחה</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-num" data-target="300" data-suffix="+">0</div>
+            <div class="stat-text">ילדים מרוצים</div>
+        </div>
+    </div>
+
+    <div class="hesitating-section fade-in">
+        <h3 style="font-size: 2rem; margin-bottom: 10px; color: #fff;">עדיין מתלבטים?</h3>
+        <p style="font-size: 1.2rem; color: #a0aab2; margin-bottom: 25px;">אנחנו כאן כדי לעזור! מוזמנים לפנות אלינו
+            בוואטסאפ לכל שאלה והתייעצות.</p>
+        <a href="https://wa.me/972508880080?text=היי, הגעתי לאתר של חוגי הפסח ואני עדיין מתלבט/ת. אשמח לעזרה!"
+            target="_blank"
+            style="background: #25D366; color: white; padding: 15px 40px; border-radius: 30px; font-weight: bold; font-size: 1.3rem; text-decoration: none; display: inline-block; box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);"
+            class="hover-scale">פניה מהירה בוואטסאפ</a>
     </div>
 
     <div id="paymentOverlay" class="overlay">
@@ -603,15 +780,10 @@
     </div>
 
     <script>
-        // הפונקציה עכשיו מקבלת גם את מספר הטלפון כדי לדעת לאן לשלוח
         function openPayment(courseName, price, phoneNum) {
             document.getElementById('modalTitle').innerText = 'הרשמה ל' + courseName + ' (' + price + ' ₪)';
-
             const waMsg = encodeURIComponent('היי! שלחתי עכשיו תשלום עבור קורס ' + courseName + '. אשמח לאישור ולקבלת פרטים נוספים.');
-
-            // מעדכן את הקישור למספר הטלפון הרלוונטי לקורס שנבחר
             document.getElementById('confirmWaLink').href = 'https://wa.me/' + phoneNum + '?text=' + waMsg;
-
             document.getElementById('paymentOverlay').style.display = 'flex';
         }
 
@@ -625,11 +797,44 @@
             }
         }
 
+        function startCounters() {
+            const counters = document.querySelectorAll('.stat-num');
+            const duration = 2500;
+
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const suffix = counter.getAttribute('data-suffix') || '';
+                let startTime = null;
+
+                const step = (timestamp) => {
+                    if (!startTime) startTime = timestamp;
+                    const progress = Math.min((timestamp - startTime) / duration, 1);
+                    const easeOut = 1 - Math.pow(1 - progress, 3);
+                    const current = Math.floor(easeOut * target);
+
+                    counter.innerText = current + suffix;
+
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    } else {
+                        counter.innerText = target + suffix;
+                    }
+                };
+                window.requestAnimationFrame(step);
+            });
+        }
+
         document.addEventListener("DOMContentLoaded", function () {
+            let countersStarted = false;
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
+
+                        if (entry.target.classList.contains('stats-section') && !countersStarted) {
+                            countersStarted = true;
+                            startCounters();
+                        }
                         observer.unobserve(entry.target);
                     }
                 });
