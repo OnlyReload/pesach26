@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>חוגי פסח בזום 2026 | טק-קידס - מיינקראפט ובינה מלאכותית</title>
+    <title>טק-קידס | חוגי פסח בזום 2026 | מיינקראפט ובינה מלאכותית</title>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;500;800&family=Rubik:wght@400;700&display=swap"
         rel="stylesheet">
     <style>
@@ -43,11 +43,12 @@
             transform: translateY(0);
         }
 
-        /* --- אזור כותרת עם הפוסטר כרקע --- */
+        /* --- אזור כותרת עם הלוגו והפוסטר --- */
         .hero {
             position: relative;
             text-align: center;
-            padding: 100px 20px 80px;
+            padding: 60px 20px 80px;
+            /* פדינג עליון קטן יותר בגלל הלוגו */
             background-image: url('banner.png');
             background-size: cover;
             background-position: center;
@@ -62,11 +63,45 @@
             z-index: 1;
         }
 
+        /* מיתוג הלוגו העגול */
+        .brand-header {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-circle {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            /* הופך את התמונה לעיגול */
+            border: 3px solid #fff;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
+            /* זוהר טכנולוגי עדין */
+            object-fit: cover;
+            /* מבטיח שהתמונה לא תתעוות בתוך העיגול */
+        }
+
+        .brand-name {
+            font-family: 'Rubik', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--mc-green), var(--ai-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
         .hero-content {
             position: relative;
             z-index: 2;
             max-width: 800px;
             margin: 0 auto;
+            padding-top: 60px;
+            /* רווח מהלוגו */
         }
 
         .top-donation-badge {
@@ -84,12 +119,20 @@
 
         .hero h1 {
             font-family: 'Rubik', sans-serif;
-            font-size: 3.5rem;
+            font-size: 4rem;
             background: linear-gradient(90deg, var(--mc-green), var(--ai-blue));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
-            text-shadow: 0px 10px 20px rgba(0, 0, 0, 0.8);
+            margin-bottom: 25px;
+            text-shadow: 0px 10px 25px rgba(0, 0, 0, 0.9);
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .hero h1 .brand-highlight {
+            background: linear-gradient(90deg, var(--mc-green), var(--ai-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero p {
@@ -495,6 +538,26 @@
 
         /* --- Mobile --- */
         @media (max-width: 900px) {
+            .hero {
+                padding-top: 100px;
+            }
+
+            /* רווח מהלוגו בנייד */
+
+            .brand-header {
+                top: 10px;
+                right: 10px;
+                gap: 8px;
+            }
+
+            .logo-circle {
+                width: 50px;
+                height: 50px;
+            }
+
+            .brand-name {
+                font-size: 1.3rem;
+            }
 
             .courses-container,
             .pricing-section,
@@ -542,13 +605,18 @@
 <body>
 
     <header class="hero">
+        <div class="brand-header fade-in">
+            <img src="logo.png" alt="TechKids Logo" class="logo-circle">
+            <span class="brand-name">TechKids</span>
+        </div>
+
         <div class="hero-content fade-in">
             <div class="top-donation-badge">
                 ❤️ 10% מההכנסות יתרמו לחיילי צה"ל ❤️
             </div>
 
             <h1>חוגי פסח בזום 2026</h1>
-            <p>שני עולמות מטורפים, חוויה אחת בלתי נשכחת - מחכים לכם אונליין!</p>
+            <p>המרכז ללימודי טכנולוגיה לילדים - שני עולמות מטורפים בחוויה אחת!</p>
 
             <div class="quick-nav">
                 <button class="btn-small mc-btn"
@@ -582,7 +650,7 @@
                 🎁 בונוס מיוחד: קבלת חשבון מיינקראפט אישי לקורס!
             </div>
             <div class="card-actions">
-                <a href="https://wa.me/972508880080?text=היי! אשמח להירשם לקורס תכנות במיינקראפט (239 ש״ח)."
+                <a href="https://wa.me/972508880080?text=היי! אשמח להירשם לקורס תכנות במיינקראפט של TechKids (239 ש״ח)."
                     target="_blank" class="btn btn-mc">להרשמה בוואטסאפ (₪239)</a>
             </div>
         </div>
@@ -601,7 +669,7 @@
                 🎁 בונוס מיוחד: קבלת כלי AI במתנה גם לאחר הקורס!
             </div>
             <div class="card-actions">
-                <a href="https://wa.me/972508880080?text=היי! אשמח להירשם לקורס בינה מלאכותית AI (239 ש״ח)."
+                <a href="https://wa.me/972508880080?text=היי! אשמח להירשם לקורס בינה מלאכותית AI של TechKids (239 ש״ח)."
                     target="_blank" class="btn btn-ai">להרשמה בוואטסאפ (₪239)</a>
             </div>
         </div>
@@ -624,9 +692,9 @@
     </div>
 
     <div class="bottom-actions fade-in">
-        <a href="https://wa.me/972508880080?text=היי! אשמח להירשם לקורס תכנות במיינקראפט." target="_blank"
+        <a href="https://wa.me/972508880080?text=היי! אשמח להירשם לקורס תכנות במיינקראפט של TechKids." target="_blank"
             class="btn btn-mc" style="width: auto; padding: 12px 30px;">הרשמה מהירה למיינקראפט</a>
-        <a href="https://wa.me/972508880080?text=היי! אשמח להירשם לקורס בינה מלאכותית." target="_blank"
+        <a href="https://wa.me/972508880080?text=היי! אשמח להירשם לקורס בינה מלאכותית של TechKids." target="_blank"
             class="btn btn-ai" style="width: auto; padding: 12px 30px;">הרשמה מהירה ל-AI</a>
     </div>
 
@@ -646,8 +714,8 @@
                 <p>כל ילד ייצור סרטון AI מרהיב, תמונות אמנותיות ואפילו שיר מקורי בעזרת הכלים שלמדו.</p>
             </div>
             <div class="result-item" style="grid-column: 1 / -1; border: 2px solid var(--gold);">
-                <h3 style="color: var(--gold);">תעודת מוסמך תכנות/AI יוקרתית 🎓</h3>
-                <p>כל משתתף יקבל תעודת סיום מעוצבת ודיגיטלית, המאשרת את הישגיו וידיעותיו.</p>
+                <h3 style="color: var(--gold);">תעודת מוסמך TechKids יוקרתית 🎓</h3>
+                <p>כל משתתף יקבל תעודת סיום מעוצבת ודיגיטלית, המאשרת את הישגיו וידיעותיו במרכז שלנו.</p>
             </div>
         </div>
     </section>
@@ -671,16 +739,17 @@
         <h3 style="font-size: 2rem; margin-bottom: 10px; color: #fff;">עדיין מתלבטים?</h3>
         <p style="font-size: 1.2rem; color: #a0aab2; margin-bottom: 25px;">אנחנו כאן כדי לעזור! מוזמנים לפנות אלינו
             בוואטסאפ לכל שאלה והתייעצות.</p>
-        <a href="https://wa.me/972508880080?text=היי, הגעתי לאתר של חוגי הפסח ואני עדיין מתלבט/ת. אשמח לעזרה!"
+        <a href="https://wa.me/972508880080?text=היי, הגעתי מתוך האתר של TechKids ואני עדיין מתלבט/ת לגבי החוג. אשמח לעזרה!"
             target="_blank"
             style="background: #25D366; color: white; padding: 15px 40px; border-radius: 30px; font-weight: bold; font-size: 1.3rem; text-decoration: none; display: inline-block; box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);"
             class="hover-scale">פניה מהירה בוואטסאפ</a>
     </div>
 
     <script>
+        // מערכת מונה חכמה לאזור הסטטיסטיקה
         function startCounters() {
             const counters = document.querySelectorAll('.stat-num');
-            const duration = 2500;
+            const duration = 2500; // 2.5 שניות לכל המספרים
 
             counters.forEach(counter => {
                 const target = +counter.getAttribute('data-target');
@@ -690,7 +759,7 @@
                 const step = (timestamp) => {
                     if (!startTime) startTime = timestamp;
                     const progress = Math.min((timestamp - startTime) / duration, 1);
-                    const easeOut = 1 - Math.pow(1 - progress, 3);
+                    const easeOut = 1 - Math.pow(1 - progress, 3); // אפקט האטה לקראת הסוף
                     const current = Math.floor(easeOut * target);
 
                     counter.innerText = current + suffix;
@@ -705,6 +774,7 @@
             });
         }
 
+        // מערכת אנימציות גלילה והפעלת המונה
         document.addEventListener("DOMContentLoaded", function () {
             let countersStarted = false;
             const observer = new IntersectionObserver((entries, observer) => {
@@ -712,6 +782,7 @@
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
 
+                        // מפעיל את המספרים רק כשמגיעים אליהם ורק פעם אחת
                         if (entry.target.classList.contains('stats-section') && !countersStarted) {
                             countersStarted = true;
                             startCounters();
