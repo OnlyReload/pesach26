@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>חוגי פסח בזום 2026 | מיינקראפט ובינה מלאכותית</title>
+    <title>חוגי פסח בזום 2026 | טק-קידס - מיינקראפט ובינה מלאכותית</title>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;500;800&family=Rubik:wght@400;700&display=swap"
         rel="stylesheet">
     <style>
@@ -15,8 +15,6 @@
             --mc-dark: #3a6e26;
             --ai-blue: #00f0ff;
             --ai-dark: #005b8f;
-            --bit-blue: #00c2e0;
-            --paybox-blue: #0052ff;
             --gold: #ffd700;
         }
 
@@ -100,7 +98,7 @@
             font-weight: 500;
         }
 
-        /* --- כפתורי ניווט מהירים (הרשמה למעלה) --- */
+        /* --- כפתורי ניווט מהירים --- */
         .quick-nav {
             display: flex;
             justify-content: center;
@@ -118,6 +116,7 @@
             transition: 0.3s;
             cursor: pointer;
             border: none;
+            display: inline-block;
         }
 
         .btn-small.mc-btn {
@@ -310,14 +309,6 @@
             border: 2px solid var(--ai-blue);
         }
 
-        .btn-wa-card {
-            background: #25D366;
-            border: 2px solid #1da851;
-            color: white;
-            font-size: 1.1rem;
-            padding: 12px;
-        }
-
         .btn:hover,
         .hover-scale:hover {
             transform: translateY(-3px);
@@ -369,7 +360,7 @@
             color: white;
         }
 
-        /* --- אזור דחיפות וכפתורי הרשמה מתחת למחיר --- */
+        /* --- אזור דחיפות וכפתורי הרשמה --- */
         .urgency-text {
             color: var(--gold);
             font-weight: bold;
@@ -502,79 +493,6 @@
             margin-top: 20px;
         }
 
-        /* --- Payment Overlay --- */
-        .overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(15, 17, 26, 0.95);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            backdrop-filter: blur(5px);
-        }
-
-        .payment-modal {
-            background: #1a1e2e;
-            padding: 40px;
-            border-radius: 20px;
-            width: 90%;
-            max-width: 450px;
-            text-align: center;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 0 50px rgba(0, 240, 255, 0.1);
-        }
-
-        .modal-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 10px;
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-            font-size: 1.2rem;
-            transition: 0.3s;
-        }
-
-        .bit-btn {
-            background: var(--bit-blue);
-            border: 2px solid #4edfff;
-        }
-
-        .paybox-btn {
-            background: var(--paybox-blue);
-            border: 2px solid #4a84ff;
-        }
-
-        .bit-btn:hover,
-        .paybox-btn:hover {
-            transform: translateY(-3px);
-        }
-
-        .confirm-wa {
-            background: #25D366;
-            font-size: 1rem;
-            margin-top: 30px;
-            border: 2px solid white;
-            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
-        }
-
-        .confirm-wa:hover {
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
-        }
-
-        .close-modal {
-            color: #aaa;
-            cursor: pointer;
-            margin-top: 20px;
-            display: block;
-            font-size: 0.9rem;
-        }
-
         /* --- Mobile --- */
         @media (max-width: 900px) {
 
@@ -634,10 +552,10 @@
 
             <div class="quick-nav">
                 <button class="btn-small mc-btn"
-                    onclick="document.getElementById('minecraft').scrollIntoView({behavior: 'smooth'});">הרשמה
-                    למיינקראפט ↑</button>
+                    onclick="document.getElementById('minecraft').scrollIntoView({behavior: 'smooth'});">למסלול
+                    מיינקראפט ↑</button>
                 <button class="btn-small ai-btn"
-                    onclick="document.getElementById('ai').scrollIntoView({behavior: 'smooth'});">הרשמה לבינה מלאכותית
+                    onclick="document.getElementById('ai').scrollIntoView({behavior: 'smooth'});">למסלול בינה מלאכותית
                     ↑</button>
             </div>
         </div>
@@ -664,10 +582,8 @@
                 🎁 בונוס מיוחד: קבלת חשבון מיינקראפט אישי לקורס!
             </div>
             <div class="card-actions">
-                <button class="btn btn-mc" onclick="openPayment('מיינקראפט', '239', '972508880080')">להרשמה ותשלום
-                    (₪239)</button>
-                <a href="https://wa.me/972508880080?text=היי, יש לי שאלה לגבי קורס מיינקראפט"
-                    class="btn btn-small-card btn-mc">וואטסאפ לשאלות</a>
+                <a href="https://wa.me/972508880080?text=היי! אשמח להירשם לקורס תכנות במיינקראפט (239 ש״ח)."
+                    target="_blank" class="btn btn-mc">להרשמה בוואטסאפ (₪239)</a>
             </div>
         </div>
 
@@ -685,10 +601,8 @@
                 🎁 בונוס מיוחד: קבלת כלי AI במתנה גם לאחר הקורס!
             </div>
             <div class="card-actions">
-                <button class="btn btn-ai" onclick="openPayment('בינה מלאכותית', '239', '972544470244')">להרשמה ותשלום
-                    (₪239)</button>
-                <a href="https://wa.me/972544470244?text=היי, יש לי שאלה לגבי קורס ה-AI"
-                    class="btn btn-small-card btn-ai">וואטסאפ לשאלות</a>
+                <a href="https://wa.me/972508880080?text=היי! אשמח להירשם לקורס בינה מלאכותית AI (239 ש״ח)."
+                    target="_blank" class="btn btn-ai">להרשמה בוואטסאפ (₪239)</a>
             </div>
         </div>
     </section>
@@ -710,10 +624,10 @@
     </div>
 
     <div class="bottom-actions fade-in">
-        <button class="btn btn-mc" style="width: auto; padding: 12px 30px;"
-            onclick="openPayment('מיינקראפט', '239', '972508880080')">הרשמה מהירה למיינקראפט</button>
-        <button class="btn btn-ai" style="width: auto; padding: 12px 30px;"
-            onclick="openPayment('בינה מלאכותית', '239', '972544470244')">הרשמה מהירה לבינה מלאכותית</button>
+        <a href="https://wa.me/972508880080?text=היי! אשמח להירשם לקורס תכנות במיינקראפט." target="_blank"
+            class="btn btn-mc" style="width: auto; padding: 12px 30px;">הרשמה מהירה למיינקראפט</a>
+        <a href="https://wa.me/972508880080?text=היי! אשמח להירשם לקורס בינה מלאכותית." target="_blank"
+            class="btn btn-ai" style="width: auto; padding: 12px 30px;">הרשמה מהירה ל-AI</a>
     </div>
 
     <div class="donation-section fade-in">
@@ -763,40 +677,7 @@
             class="hover-scale">פניה מהירה בוואטסאפ</a>
     </div>
 
-    <div id="paymentOverlay" class="overlay">
-        <div class="payment-modal">
-            <h3 id="modalTitle" style="color: white; font-family: Rubik, sans-serif;">תשלום לקורס</h3>
-            <p style="font-size: 1rem; color: #ccc; margin-bottom: 25px;">שלחו את התשלום באפליקציה המועדפת עליכם:</p>
-
-            <a href="https://www.bitpay.co.il/app/" target="_blank" class="modal-btn bit-btn">שליחת תשלום ב-Bit</a>
-            <a href="https://www.payboxapp.com/" target="_blank" class="modal-btn paybox-btn">שליחת תשלום ב-PayBox</a>
-
-            <a id="confirmWaLink" href="#" target="_blank" class="modal-btn confirm-wa">
-                ✅ שלחתי תשלום! לחצו לקבלת הלינק לזום
-            </a>
-
-            <span class="close-modal" onclick="closePayment()">ביטול וחזרה לאתר</span>
-        </div>
-    </div>
-
     <script>
-        function openPayment(courseName, price, phoneNum) {
-            document.getElementById('modalTitle').innerText = 'הרשמה ל' + courseName + ' (' + price + ' ₪)';
-            const waMsg = encodeURIComponent('היי! שלחתי עכשיו תשלום עבור קורס ' + courseName + '. אשמח לאישור ולקבלת פרטים נוספים.');
-            document.getElementById('confirmWaLink').href = 'https://wa.me/' + phoneNum + '?text=' + waMsg;
-            document.getElementById('paymentOverlay').style.display = 'flex';
-        }
-
-        function closePayment() {
-            document.getElementById('paymentOverlay').style.display = 'none';
-        }
-
-        window.onclick = function (event) {
-            if (event.target == document.getElementById('paymentOverlay')) {
-                closePayment();
-            }
-        }
-
         function startCounters() {
             const counters = document.querySelectorAll('.stat-num');
             const duration = 2500;
