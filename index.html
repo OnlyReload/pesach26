@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>חוגי פסח בזום 2026 | מיינקראפט ובינה מלאכותית</title>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;500;800&family=Rubik:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f111a;
+            --text-main: #ffffff;
+            --mc-green: #5aa13e;
+            --mc-dark: #3a6e26;
+            --ai-blue: #00f0ff;
+            --ai-dark: #005b8f;
+            --gold: #ffd700;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Heebo', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- אזור כותרת עם הפוסטר כרקע --- */
+        .hero {
+            position: relative;
+            text-align: center;
+            padding: 100px 20px 80px;
+            background-image: url('banner.png');
+            background-size: cover;
+            background-position: center;
+            border-bottom: 3px solid #333;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 17, 26, 0.85);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-family: 'Rubik', sans-serif;
+            font-size: 3.5rem;
+            background: linear-gradient(90deg, var(--mc-green), var(--ai-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            text-shadow: 0px 10px 20px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: #e2e8f0;
+            font-weight: 500;
+        }
+
+        /* --- סרגל מידע --- */
+        .info-bar {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            max-width: 1000px;
+            margin: -40px auto 40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .info-item {
+            background: #1e2235;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* --- חלוקת הקורסים --- */
+        .courses-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .course-card {
+            border-radius: 20px;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mc-theme {
+            background-color: #242424;
+            border: 4px solid var(--mc-green);
+            box-shadow: inset -8px -8px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .ai-theme {
+            background: linear-gradient(135deg, #0a0e17 0%, #111827 100%);
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            box-shadow: 0 0 40px rgba(0, 240, 255, 0.05);
+        }
+
+        .course-card h2 {
+            font-family: 'Rubik', sans-serif;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .mc-theme h2 {
+            color: var(--mc-green);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .ai-theme h2 {
+            color: var(--ai-blue);
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+        }
+
+        .time-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .course-card ul {
+            list-style: none;
+            margin-top: 10px;
+            flex-grow: 1;
+        }
+
+        .course-card li {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            padding-right: 30px;
+            position: relative;
+        }
+
+        .mc-theme li::before {
+            content: '🟩';
+            position: absolute;
+            right: 0;
+            font-size: 1rem;
+            top: 4px;
+        }
+
+        .ai-theme li::before {
+            content: '⚡';
+            position: absolute;
+            right: 0;
+            font-size: 1.2rem;
+            top: 2px;
+        }
+
+        .bonus-box {
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+
+        .mc-theme .bonus-box {
+            background: rgba(90, 161, 62, 0.2);
+            border: 2px dashed var(--mc-green);
+            color: #8cf268;
+        }
+
+        .ai-theme .bonus-box {
+            background: rgba(0, 240, 255, 0.1);
+            border: 2px dashed var(--ai-blue);
+            color: var(--ai-blue);
+        }
+
+        /* --- אזור תמחור --- */
+        .pricing-section {
+            max-width: 800px;
+            margin: 60px auto 20px;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .price-card {
+            background: #1e2235;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid #333;
+        }
+
+        .price-card.highlight {
+            background: linear-gradient(135deg, #2a1b3d, #1a0b2e);
+            border: 2px solid var(--gold);
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(255, 215, 0, 0.15);
+        }
+
+        .price-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #a0aab2;
+        }
+
+        .price-card.highlight h3 {
+            color: var(--gold);
+        }
+
+        .price-amount {
+            font-size: 3.5rem;
+            font-family: 'Rubik', sans-serif;
+            font-weight: bold;
+        }
+
+        .price-card.highlight .price-amount {
+            color: white;
+        }
+
+        .donation-section {
+            text-align: center;
+            margin: 30px auto;
+            font-size: 1.3rem;
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        /* --- אזור הכפתורים החדש --- */
+        .cta-container {
+            text-align: center;
+            padding: 20px 20px 80px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .cta-container h3 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #fff;
+        }
+
+        .buttons-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            /* חשוב מאוד לטלפונים */
+        }
+
+        .action-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.4rem;
+            font-weight: 800;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 15px;
+            transition: all 0.3s;
+            flex: 1;
+            min-width: 280px;
+            max-width: 400px;
+        }
+
+        .action-btn span {
+            font-size: 1rem;
+            font-weight: normal;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-5px);
+        }
+
+        /* כפתור למיינקראפט */
+        .btn-mc {
+            background: linear-gradient(135deg, var(--mc-green), var(--mc-dark));
+            box-shadow: 0 10px 25px rgba(90, 161, 62, 0.4);
+            border: 2px solid #73c952;
+        }
+
+        .btn-mc:hover {
+            box-shadow: 0 15px 35px rgba(90, 161, 62, 0.6);
+        }
+
+        /* כפתור לבינה מלאכותית */
+        .btn-ai {
+            background: linear-gradient(135deg, #00b4cc, var(--ai-dark));
+            box-shadow: 0 10px 25px rgba(0, 240, 255, 0.3);
+            border: 2px solid var(--ai-blue);
+        }
+
+        .btn-ai:hover {
+            box-shadow: 0 15px 35px rgba(0, 240, 255, 0.5);
+        }
+
+
+        /* --- התאמות למובייל --- */
+        @media (max-width: 900px) {
+
+            .courses-container,
+            .pricing-section {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .info-bar {
+                flex-direction: column;
+                max-width: 300px;
+                margin: 20px auto;
+            }
+
+            .price-card.highlight {
+                transform: scale(1);
+            }
+
+            /* הכפתורים בטלפון יסתדרו אחד מתחת לשני */
+            .buttons-wrapper {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .action-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="hero">
+        <div class="hero-content fade-in">
+            <h1>חוגים לילדים בפסח בזום 2026</h1>
+            <p>שני עולמות מטורפים, חוויה אחת בלתי נשכחת - מחכים לכם אונליין!</p>
+        </div>
+    </header>
+
+    <div class="info-bar fade-in">
+        <div class="info-item">📅 24-26 למרץ (שלישי - חמישי)</div>
+        <div class="info-item">👦👧 מתאים לכיתות ג' - ז'</div>
+        <div class="info-item">💻 אונליין ב-Zoom</div>
+    </div>
+
+    <section class="courses-container">
+        <div class="course-card mc-theme fade-in">
+            <h2>תכנות במיינקראפט</h2>
+            <div class="time-badge">⏰ שעה: 18:00</div>
+            <ul>
+                <li><strong>ישחקו במיינקראפט:</strong> למידה מתוך העולם שהם אוהבים.</li>
+                <li><strong>יתכנתו במיינקראפט:</strong> כתיבת קוד אמיתי בתוך המשחק.</li>
+                <li><strong>פיתוח דימיון חזותי:</strong> תכנון ובניית מרחבים וירטואליים.</li>
+                <li><strong>מונחים בתכנות:</strong> היכרות מעשית עם לולאות ותנאים.</li>
+                <li><strong>פתרון בעיות:</strong> פיתוח חשיבה לוגית להתגברות על מכשולים.</li>
+            </ul>
+            <div class="bonus-box">
+                🎁 בונוס מיוחד: קבלת חשבון מיינקראפט אישי לקורס!
+            </div>
+        </div>
+
+        <div class="course-card ai-theme fade-in">
+            <h2>בינה מלאכותית (AI)</h2>
+            <div class="time-badge">⏰ שעה: 17:00</div>
+            <ul>
+                <li><strong>יצירת תמונות:</strong> שימוש בטכנולוגיית Text-to-Image.</li>
+                <li><strong>היכרות עם הכלים:</strong> שימוש בבינות מלאכותיות מתקדמות.</li>
+                <li><strong>הלחנת מוזיקה:</strong> יצירת שירים מדהימים בעזרת AI.</li>
+                <li><strong>Generative AI:</strong> הבנת הכוח של בינה מלאכותית יוצרת.</li>
+                <li><strong>קסם הוידאו:</strong> הפיכת תמונות סטטיות לסרטונים זזים.</li>
+            </ul>
+            <div class="bonus-box">
+                🎁 בונוס מיוחד: קבלת כלי AI במתנה גם לאחר הקורס!
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing-section fade-in">
+        <div class="price-card">
+            <h3>מחיר הקורס</h3>
+            <div class="price-amount">₪239</div>
+        </div>
+        <div class="price-card highlight">
+            <h3>מבצע חבר מביא חבר</h3>
+            <div class="price-amount">₪189</div>
+            <p style="margin-top: 10px; color: #ddd;">למשתתף (במקום 239 ש"ח)</p>
+        </div>
+    </section>
+
+    <div class="donation-section fade-in">
+        ❤️ 10% מההכנסות יתרמו לחיילי צה"ל ❤️
+    </div>
+
+    <div class="cta-container fade-in">
+        <h3>בחרו את הקורס שלכם להרשמה בוואטסאפ:</h3>
+        <div class="buttons-wrapper">
+            <a href="https://wa.me/972508880080?text=היי! שמעתי על קורס התכנות במיינקראפט. אשמח לקבל פרטים נוספים ולהירשם."
+                target="_blank" class="action-btn btn-mc">
+                הרשמה למיינקראפט
+                <span>לחצו לשליחת הודעה</span>
+            </a>
+
+            <a href="https://wa.me/972508880080?text=היי! שמעתי על קורס הבינה המלאכותית (AI). אשמח לקבל פרטים נוספים ולהירשם."
+                target="_blank" class="action-btn btn-ai">
+                הרשמה לבינה מלאכותית
+                <span>לחצו לשליחת הודעה</span>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        });
+    </script>
+
+</body>
+
+</html>
