@@ -5,7 +5,7 @@
     <script data-goatcounter="https://reload.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>טק-קידס | חוגי פסח בזום 2026 | מיינקראפט ובינה מלאכותית</title>
+    <title>טק-קידס | חוגי פסח בזום 2026 | בינה מלאכותית ומיינקראפט</title>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;500;800&family=Rubik:wght@400;700&display=swap"
         rel="stylesheet">
     <style>
@@ -17,12 +17,20 @@
             --ai-blue: #00f0ff;
             --ai-dark: #005b8f;
             --gold: #ffd700;
+            --nav-height: 70px;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+        }
+
+        html {
+            /* מונע מהתפריט העליון להסתיר כותרות בזמן גלילה */
+            scroll-padding-top: var(--nav-height);
+            scroll-behavior: smooth;
+            /* זה גורם לכל הקישורים הפנימיים להחליק */
         }
 
         body {
@@ -44,12 +52,88 @@
             transform: translateY(0);
         }
 
-        /* --- אזור כותרת עם הלוגו והפוסטר --- */
+        /* --- תפריט ניווט עליון (Navbar) --- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: var(--nav-height);
+            background: rgba(15, 17, 26, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .nav-logo {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
+            object-fit: cover;
+        }
+
+        .nav-name {
+            font-family: 'Rubik', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--mc-green), var(--ai-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+            transition: left 0.4s ease-in-out;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--ai-blue);
+        }
+
+        /* כפתור המבורגר למובייל */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 6px;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 30px;
+            height: 3px;
+            background-color: white;
+            transition: 0.3s;
+            border-radius: 3px;
+        }
+
+        /* --- אזור כותרת עם הפוסטר --- */
         .hero {
             position: relative;
             text-align: center;
-            padding: 60px 20px 80px;
-            /* פדינג עליון קטן יותר בגלל הלוגו */
+            padding: calc(var(--nav-height) + 60px) 20px 80px;
             background-image: url('banner.png');
             background-size: cover;
             background-position: center;
@@ -64,45 +148,11 @@
             z-index: 1;
         }
 
-        /* מיתוג הלוגו העגול */
-        .brand-header {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .logo-circle {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            /* הופך את התמונה לעיגול */
-            border: 3px solid #fff;
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
-            /* זוהר טכנולוגי עדין */
-            object-fit: cover;
-            /* מבטיח שהתמונה לא תתעוות בתוך העיגול */
-        }
-
-        .brand-name {
-            font-family: 'Rubik', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 800;
-            background: linear-gradient(90deg, var(--mc-green), var(--ai-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
         .hero-content {
             position: relative;
             z-index: 2;
             max-width: 800px;
             margin: 0 auto;
-            padding-top: 60px;
-            /* רווח מהלוגו */
         }
 
         .top-donation-badge {
@@ -130,19 +180,12 @@
             line-height: 1.2;
         }
 
-        .hero h1 .brand-highlight {
-            background: linear-gradient(90deg, var(--mc-green), var(--ai-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
         .hero p {
             font-size: 1.5rem;
             color: #e2e8f0;
             font-weight: 500;
         }
 
-        /* --- כפתורי ניווט מהירים --- */
         .quick-nav {
             display: flex;
             justify-content: center;
@@ -178,14 +221,14 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
-        /* --- סרגל מידע --- */
+        /* --- סרגל מידע (Info Bar) --- */
         .info-bar {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
             gap: 20px;
-            max-width: 1000px;
-            margin: -40px auto 40px;
+            max-width: 1100px;
+            margin: -35px auto 40px;
             position: relative;
             z-index: 10;
         }
@@ -195,7 +238,7 @@
             padding: 15px 25px;
             border-radius: 50px;
             font-weight: bold;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
             display: flex;
@@ -264,8 +307,16 @@
             padding: 5px 15px;
             border-radius: 20px;
             font-size: 1.1rem;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .course-meta {
+            font-size: 1.1rem;
+            color: #d1d5db;
+            margin-bottom: 20px;
+            display: block;
+            font-weight: bold;
         }
 
         .course-card ul {
@@ -318,7 +369,6 @@
             color: var(--ai-blue);
         }
 
-        /* --- כפתורי פעולה בקארדים --- */
         .card-actions {
             display: flex;
             flex-direction: column;
@@ -404,7 +454,6 @@
             color: white;
         }
 
-        /* --- אזור דחיפות וכפתורי הרשמה --- */
         .urgency-text {
             color: var(--gold);
             font-weight: bold;
@@ -433,7 +482,6 @@
             padding-bottom: 20px;
         }
 
-        /* --- מה הילדים מקבלים --- */
         .results-section {
             max-width: 1000px;
             margin: 40px auto;
@@ -489,7 +537,6 @@
             color: #ccc;
         }
 
-        /* --- אזור מונה מספרים --- */
         .stats-section {
             display: flex;
             justify-content: center;
@@ -528,7 +575,99 @@
             font-weight: 500;
         }
 
-        /* --- אזור סיום (מתלבטים) --- */
+        /* --- סקשן מדריכים --- */
+        .instructors-section {
+            max-width: 1000px;
+            margin: 60px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .instructors-section h2 {
+            font-family: 'Rubik', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #fff;
+        }
+
+        .instructors-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .instructor-card {
+            background: linear-gradient(145deg, rgba(30, 34, 53, 0.8), rgba(15, 17, 26, 0.9));
+            border-radius: 20px;
+            padding: 40px 30px;
+            border: 1px solid #333;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .instructor-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .instructor-photo-container {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            border: 3px solid;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .ofek-border {
+            border-color: var(--mc-green);
+        }
+
+        .yarden-border {
+            border-color: var(--ai-blue);
+        }
+
+        .instructor-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .zoom-img {
+            transform: scale(1.3);
+            transform-origin: center center;
+        }
+
+        .instructor-card h3 {
+            font-family: 'Rubik', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+            color: white;
+        }
+
+        .instructor-role {
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .ofek-role {
+            color: var(--mc-green);
+        }
+
+        .yarden-role {
+            color: var(--ai-blue);
+        }
+
+        .instructor-card p {
+            font-size: 1.1rem;
+            color: #d1d5db;
+            line-height: 1.6;
+        }
+
         .hesitating-section {
             text-align: center;
             padding: 50px 20px;
@@ -537,43 +676,74 @@
             margin-top: 20px;
         }
 
-        /* --- Mobile --- */
+        /* =========================================
+           MOBILE OPTIMIZATIONS
+           ========================================= */
         @media (max-width: 900px) {
-            .hero {
-                padding-top: 100px;
+
+            /* תפריט נגלל הצידה במובייל */
+            .nav-links {
+                position: absolute;
+                top: var(--nav-height);
+                left: -100%;
+                flex-direction: column;
+                background: rgba(15, 17, 26, 0.98);
+                width: 100%;
+                text-align: center;
+                padding: 20px 0;
+                transition: 0.4s ease-in-out;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             }
 
-            /* רווח מהלוגו בנייד */
-
-            .brand-header {
-                top: 10px;
-                right: 10px;
-                gap: 8px;
+            .nav-links.active {
+                left: 0;
             }
 
-            .logo-circle {
-                width: 50px;
-                height: 50px;
+            .nav-links li {
+                margin: 15px 0;
             }
 
-            .brand-name {
+            .nav-links a {
                 font-size: 1.3rem;
+                display: block;
+                padding: 10px;
             }
 
-            .courses-container,
-            .pricing-section,
-            .results-grid {
-                grid-template-columns: 1fr;
+            .hamburger {
+                display: flex;
+            }
+
+            /* אנימציה להמבורגר */
+            .hamburger.toggle span:nth-child(1) {
+                transform: rotate(-45deg) translate(-6px, 6px);
+            }
+
+            .hamburger.toggle span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.toggle span:nth-child(3) {
+                transform: rotate(45deg) translate(-6px, -6px);
             }
 
             .hero h1 {
                 font-size: 2.5rem;
             }
 
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            /* הסתרת סרגל המידע כדי לחסוך מקום כפי שביקשת */
             .info-bar {
-                flex-direction: column;
-                max-width: 300px;
-                margin: 20px auto;
+                display: none;
+            }
+
+            .courses-container,
+            .pricing-section,
+            .results-grid,
+            .instructors-grid {
+                grid-template-columns: 1fr;
             }
 
             .price-card.highlight {
@@ -605,12 +775,28 @@
 
 <body>
 
-    <header class="hero">
-        <div class="brand-header fade-in">
-            <img src="logo.png" alt="TechKids Logo" class="logo-circle">
-            <span class="brand-name">TechKids</span>
+    <nav class="navbar">
+        <a href="#" class="nav-brand">
+            <img src="logo.png" alt="TechKids Logo" class="nav-logo">
+            <span class="nav-name">TechKids</span>
+        </a>
+
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
 
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#ai" onclick="toggleMenu()">בינה מלאכותית</a></li>
+            <li><a href="#minecraft" onclick="toggleMenu()">מיינקראפט</a></li>
+            <li><a href="#pricing" onclick="toggleMenu()">מחירים</a></li>
+            <li><a href="#instructors" onclick="toggleMenu()">המדריכים</a></li>
+            <li><a href="#contact" onclick="toggleMenu()">צור קשר</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
         <div class="hero-content fade-in">
             <div class="top-donation-badge">
                 ❤️ 10% מההכנסות יתרמו לחיילי צה"ל ❤️
@@ -620,26 +806,50 @@
             <p>המרכז ללימודי טכנולוגיה לילדים - שני עולמות מטורפים בחוויה אחת!</p>
 
             <div class="quick-nav">
-                <button class="btn-small mc-btn"
-                    onclick="document.getElementById('minecraft').scrollIntoView({behavior: 'smooth'});">למסלול
-                    מיינקראפט ↑</button>
                 <button class="btn-small ai-btn"
                     onclick="document.getElementById('ai').scrollIntoView({behavior: 'smooth'});">למסלול בינה מלאכותית
-                    ↑</button>
+                    ↓</button>
+                <button class="btn-small mc-btn"
+                    onclick="document.getElementById('minecraft').scrollIntoView({behavior: 'smooth'});">למסלול
+                    מיינקראפט ↓</button>
             </div>
         </div>
     </header>
 
     <div class="info-bar fade-in">
-        <div class="info-item">📅 24-26 למרץ (שלישי - חמישי)</div>
+        <div class="info-item">📅 24-26 למרץ (ג'-ה')</div>
         <div class="info-item">👦👧 מתאים לכיתות ג' - ז'</div>
         <div class="info-item">💻 אונליין ב-Zoom</div>
+        <div class="info-item">⏳ משך שיעור: שעה</div>
+        <div class="info-item">🖥️ דרוש מחשב</div>
     </div>
 
     <section class="courses-container">
+
+        <div id="ai" class="course-card ai-theme fade-in">
+            <h2>בינה מלאכותית (AI)</h2>
+            <div class="time-badge">📅 24-26 למרץ | ⏰ שעה: 17:00</div>
+            <div class="course-meta">⏳ משך שיעור: שעה אחת | 💻 דרוש מחשב</div>
+            <ul>
+                <li><strong>יצירת תמונות:</strong> שימוש בטכנולוגיית Text-to-Image.</li>
+                <li><strong>היכרות עם הכלים:</strong> שימוש בבינות מלאכותיות מתקדמות.</li>
+                <li><strong>הלחנת מוזיקה:</strong> יצירת שירים מדהימים בעזרת AI.</li>
+                <li><strong>Generative AI:</strong> הבנת הכוח של בינה מלאכותית יוצרת.</li>
+                <li><strong>קסם הוידאו:</strong> הפיכת תמונות סטטיות לסרטונים זזים.</li>
+            </ul>
+            <div class="bonus-box">
+                🎁 בונוס מיוחד: קבלת כלי AI במתנה גם לאחר הקורס!
+            </div>
+            <div class="card-actions">
+                <a href="https://wa.me/972508880080?text=היי! אשמח להירשם לקורס בינה מלאכותית AI של TechKids (239 ש״ח)."
+                    target="_blank" class="btn btn-ai">להרשמה בוואטסאפ (₪239)</a>
+            </div>
+        </div>
+
         <div id="minecraft" class="course-card mc-theme fade-in">
             <h2>תכנות במיינקראפט</h2>
-            <div class="time-badge">⏰ שעה: 18:00</div>
+            <div class="time-badge">📅 24-26 למרץ | ⏰ שעה: 18:00</div>
+            <div class="course-meta">⏳ משך שיעור: שעה אחת | 💻 דרוש מחשב</div>
             <ul>
                 <li><strong>ישחקו במיינקראפט:</strong> למידה מתוך העולם שהם אוהבים.</li>
                 <li><strong>יתכנתו במיינקראפט:</strong> כתיבת קוד אמיתי בתוך המשחק.</li>
@@ -656,27 +866,9 @@
             </div>
         </div>
 
-        <div id="ai" class="course-card ai-theme fade-in">
-            <h2>בינה מלאכותית (AI)</h2>
-            <div class="time-badge">⏰ שעה: 17:00</div>
-            <ul>
-                <li><strong>יצירת תמונות:</strong> שימוש בטכנולוגיית Text-to-Image.</li>
-                <li><strong>היכרות עם הכלים:</strong> שימוש בבינות מלאכותיות מתקדמות.</li>
-                <li><strong>הלחנת מוזיקה:</strong> יצירת שירים מדהימים בעזרת AI.</li>
-                <li><strong>Generative AI:</strong> הבנת הכוח של בינה מלאכותית יוצרת.</li>
-                <li><strong>קסם הוידאו:</strong> הפיכת תמונות סטטיות לסרטונים זזים.</li>
-            </ul>
-            <div class="bonus-box">
-                🎁 בונוס מיוחד: קבלת כלי AI במתנה גם לאחר הקורס!
-            </div>
-            <div class="card-actions">
-                <a href="https://wa.me/972508880080?text=היי! אשמח להירשם לקורס בינה מלאכותית AI של TechKids (239 ש״ח)."
-                    target="_blank" class="btn btn-ai">להרשמה בוואטסאפ (₪239)</a>
-            </div>
-        </div>
     </section>
 
-    <section class="pricing-section fade-in">
+    <section class="pricing-section fade-in" id="pricing">
         <div class="price-card">
             <h3>מחיר הקורס</h3>
             <div class="price-amount">₪239</div>
@@ -693,10 +885,10 @@
     </div>
 
     <div class="bottom-actions fade-in">
-        <a href="https://wa.me/972508880080?text=היי! אשמח להירשם לקורס תכנות במיינקראפט של TechKids." target="_blank"
-            class="btn btn-mc" style="width: auto; padding: 12px 30px;">הרשמה מהירה למיינקראפט</a>
         <a href="https://wa.me/972508880080?text=היי! אשמח להירשם לקורס בינה מלאכותית של TechKids." target="_blank"
             class="btn btn-ai" style="width: auto; padding: 12px 30px;">הרשמה מהירה ל-AI</a>
+        <a href="https://wa.me/972508880080?text=היי! אשמח להירשם לקורס תכנות במיינקראפט של TechKids." target="_blank"
+            class="btn btn-mc" style="width: auto; padding: 12px 30px;">הרשמה מהירה למיינקראפט</a>
     </div>
 
     <div class="donation-section fade-in">
@@ -706,13 +898,13 @@
     <section class="results-section fade-in">
         <h2>מה הילדים מקבלים כתוצאה מהחוג?</h2>
         <div class="results-grid">
-            <div class="result-item mc-result">
-                <h3>פרויקט תכנות במיינקראפט 🚀</h3>
-                <p>הילדים יבנו פרויקט תכנות ייחודי משלהם בתוך המשחק, המשלב את כל מונחי התכנות שלמדו.</p>
-            </div>
             <div class="result-item ai-result">
                 <h3>יצירת AI ומוזיקה מקורית 🎨</h3>
                 <p>כל ילד ייצור סרטון AI מרהיב, תמונות אמנותיות ואפילו שיר מקורי בעזרת הכלים שלמדו.</p>
+            </div>
+            <div class="result-item mc-result">
+                <h3>פרויקט תכנות במיינקראפט 🚀</h3>
+                <p>הילדים יבנו פרויקט תכנות ייחודי משלהם בתוך המשחק, המשלב את כל מונחי התכנות שלמדו.</p>
             </div>
             <div class="result-item" style="grid-column: 1 / -1; border: 2px solid var(--gold);">
                 <h3 style="color: var(--gold);">תעודת מוסמך TechKids יוקרתית 🎓</h3>
@@ -736,7 +928,40 @@
         </div>
     </div>
 
-    <div class="hesitating-section fade-in">
+    <section class="instructors-section fade-in" id="instructors">
+        <h2>הכירו את המדריכים שלנו</h2>
+        <div class="instructors-grid">
+
+            <div class="instructor-card">
+                <div class="instructor-photo-container ofek-border">
+                    <img src="ofek.jpg" alt="אופק רוזנטל" class="instructor-img">
+                </div>
+                <h3>אופק רוזנטל</h3>
+                <div class="instructor-role ofek-role">יזם ומדריך תכנות במיינקראפט</div>
+                <p>
+                    בן 16.5 מגבעתיים. יזם טכנולוגי ומדריך עם ניסיון של 5 שנים בעבודה עם ילדים ונוער. כמי שצמח בעולם
+                    ההדרכה ושימש כמדריך ראשי בתנועת נוער, אני מאמין שלמידה אמיתית קורית דרך חיבור אישי וחוויה. המטרה שלי
+                    ב-TechKids היא להפוך את הילדים שלכם ממשתמשים פסיביים ליוצרים אקטיביים בעולמות המחר.
+                </p>
+            </div>
+
+            <div class="instructor-card">
+                <div class="instructor-photo-container yarden-border">
+                    <img src="yarden.jpeg" alt="ירדן דגן" class="instructor-img zoom-img">
+                </div>
+                <h3>ירדן דגן</h3>
+                <div class="instructor-role yarden-role">מדריך קורס בינה מלאכותית (AI)</div>
+                <p>
+                    נעים להכיר, אני ירדן דגן, בן 17 מגבעתיים, מדריך בצופים עם ניסיון של שנתיים בעבודה עם ילדים ונוער.
+                    דרך ההדרכה הבנתי עד כמה חיבור אישי וגישה חברותית הם המפתח ללמידה משמעותית. אני מאמין שלבינה מלאכותית
+                    יש יכולת לפתוח לילדים אופקים חדשים, לפתח יצירתיות ולהכין אותם לעולם של מחר.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="hesitating-section fade-in" id="contact">
         <h3 style="font-size: 2rem; margin-bottom: 10px; color: #fff;">עדיין מתלבטים?</h3>
         <p style="font-size: 1.2rem; color: #a0aab2; margin-bottom: 25px;">אנחנו כאן כדי לעזור! מוזמנים לפנות אלינו
             בוואטסאפ לכל שאלה והתייעצות.</p>
@@ -747,10 +972,22 @@
     </div>
 
     <script>
+        // פונקציה לפתיחה וסגירה של תפריט ההמבורגר
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            const hamburger = document.querySelector('.hamburger');
+
+            // בודק אם אנחנו במובייל לפני שהוא מפעיל
+            if (window.innerWidth <= 900) {
+                navLinks.classList.toggle('active');
+                hamburger.classList.toggle('toggle');
+            }
+        }
+
         // מערכת מונה חכמה לאזור הסטטיסטיקה
         function startCounters() {
             const counters = document.querySelectorAll('.stat-num');
-            const duration = 2500; // 2.5 שניות לכל המספרים
+            const duration = 2500;
 
             counters.forEach(counter => {
                 const target = +counter.getAttribute('data-target');
@@ -760,7 +997,7 @@
                 const step = (timestamp) => {
                     if (!startTime) startTime = timestamp;
                     const progress = Math.min((timestamp - startTime) / duration, 1);
-                    const easeOut = 1 - Math.pow(1 - progress, 3); // אפקט האטה לקראת הסוף
+                    const easeOut = 1 - Math.pow(1 - progress, 3);
                     const current = Math.floor(easeOut * target);
 
                     counter.innerText = current + suffix;
@@ -783,7 +1020,6 @@
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
 
-                        // מפעיל את המספרים רק כשמגיעים אליהם ורק פעם אחת
                         if (entry.target.classList.contains('stats-section') && !countersStarted) {
                             countersStarted = true;
                             startCounters();
