@@ -6,6 +6,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>טק-קידס | חוגי פסח בזום 2026 | בינה מלאכותית ומיינקראפט</title>
+
+    <meta name="description"
+        content="טק-קידס | חוגי פסח 2026 בזום: למידת בינה מלאכותית ותכנות במיינקראפט. הפכו את הילדים ליוצרים טכנולוגיים!">
+    <meta name="keywords" content="חוג מיינקראפט, חוג בינה מלאכותית, קורס טכנולוגיה לילדים, חוגי פסח 2026, קורס זום">
+
+    <meta property="og:title" content="טק-קידס | חוגי פסח בזום 2026">
+    <meta property="og:description"
+        content="מיינקראפט ובינה מלאכותית בחוויה אחת מטורפת בזום. נותרו מקומות בודדים למחזור הקרוב - הירשמו עכשיו!">
+    <meta property="og:image" content="banner.png">
+    <meta property="og:type" content="website">
+
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;500;800&family=Rubik:wght@400;700&display=swap"
         rel="stylesheet">
     <style>
@@ -27,10 +38,8 @@
         }
 
         html {
-            /* מונע מהתפריט העליון להסתיר כותרות בזמן גלילה */
             scroll-padding-top: var(--nav-height);
             scroll-behavior: smooth;
-            /* זה גורם לכל הקישורים הפנימיים להחליק */
         }
 
         body {
@@ -112,7 +121,6 @@
             color: var(--ai-blue);
         }
 
-        /* כפתור המבורגר למובייל */
         .hamburger {
             display: none;
             flex-direction: column;
@@ -676,12 +684,46 @@
             margin-top: 20px;
         }
 
+        /* --- עיצוב כפתורי רשתות חברתיות --- */
+        .social-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-link:hover {
+            background: #1877F2;
+            border-color: #1877F2;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(24, 119, 242, 0.4);
+        }
+
+        .social-link svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
         /* =========================================
            MOBILE OPTIMIZATIONS
            ========================================= */
         @media (max-width: 900px) {
-
-            /* תפריט נגלל הצידה במובייל */
             .nav-links {
                 position: absolute;
                 top: var(--nav-height);
@@ -713,7 +755,6 @@
                 display: flex;
             }
 
-            /* אנימציה להמבורגר */
             .hamburger.toggle span:nth-child(1) {
                 transform: rotate(-45deg) translate(-6px, 6px);
             }
@@ -734,7 +775,6 @@
                 font-size: 1.2rem;
             }
 
-            /* סידור סרגל המידע לתגיות קטנות במובייל במקום להסתיר אותו */
             .info-bar {
                 flex-direction: row;
                 flex-wrap: wrap;
@@ -798,11 +838,11 @@
         </div>
 
         <ul class="nav-links" id="navLinks">
-            <li><a href="#ai" onclick="toggleMenu()">בינה מלאכותית</a></li>
-            <li><a href="#minecraft" onclick="toggleMenu()">מיינקראפט</a></li>
-            <li><a href="#pricing" onclick="toggleMenu()">מחירים</a></li>
-            <li><a href="#instructors" onclick="toggleMenu()">המדריכים</a></li>
-            <li><a href="#contact" onclick="toggleMenu()">צור קשר</a></li>
+            <li><a href="#ai">בינה מלאכותית</a></li>
+            <li><a href="#minecraft">מיינקראפט</a></li>
+            <li><a href="#pricing">מחירים</a></li>
+            <li><a href="#instructors">המדריכים</a></li>
+            <li><a href="#contact">צור קשר</a></li>
         </ul>
     </nav>
 
@@ -852,7 +892,8 @@
             </div>
             <div class="card-actions">
                 <a href="https://wa.me/972508880080?text=היי! אשמח להירשם לקורס בינה מלאכותית AI של TechKids (239 ש״ח)."
-                    target="_blank" class="btn btn-ai">להרשמה בוואטסאפ (₪239)</a>
+                    target="_blank" aria-label="הרשמה לקורס בינה מלאכותית בוואטסאפ" class="btn btn-ai">להרשמה בוואטסאפ
+                    (₪239)</a>
             </div>
         </div>
 
@@ -872,7 +913,8 @@
             </div>
             <div class="card-actions">
                 <a href="https://wa.me/972508880080?text=היי! אשמח להירשם לקורס תכנות במיינקראפט של TechKids (239 ש״ח)."
-                    target="_blank" class="btn btn-mc">להרשמה בוואטסאפ (₪239)</a>
+                    target="_blank" aria-label="הרשמה לקורס מיינקראפט בוואטסאפ" class="btn btn-mc">להרשמה בוואטסאפ
+                    (₪239)</a>
             </div>
         </div>
 
@@ -896,9 +938,11 @@
 
     <div class="bottom-actions fade-in">
         <a href="https://wa.me/972508880080?text=היי! אשמח להירשם לקורס בינה מלאכותית של TechKids." target="_blank"
-            class="btn btn-ai" style="width: auto; padding: 12px 30px;">הרשמה מהירה ל-AI</a>
+            aria-label="הרשמה מהירה לקורס בינה מלאכותית" class="btn btn-ai"
+            style="width: auto; padding: 12px 30px;">הרשמה מהירה ל-AI</a>
         <a href="https://wa.me/972508880080?text=היי! אשמח להירשם לקורס תכנות במיינקראפט של TechKids." target="_blank"
-            class="btn btn-mc" style="width: auto; padding: 12px 30px;">הרשמה מהירה למיינקראפט</a>
+            aria-label="הרשמה מהירה לקורס מיינקראפט" class="btn btn-mc" style="width: auto; padding: 12px 30px;">הרשמה
+            מהירה למיינקראפט</a>
     </div>
 
     <div class="donation-section fade-in">
@@ -976,24 +1020,43 @@
         <h3 style="font-size: 2rem; margin-bottom: 10px; color: #fff;">עדיין מתלבטים?</h3>
         <p style="font-size: 1.2rem; color: #a0aab2; margin-bottom: 25px;">אנחנו כאן כדי לעזור! מוזמנים לפנות אלינו
             בוואטסאפ לכל שאלה והתייעצות.</p>
+
         <a href="https://wa.me/972508880080?text=היי, הגעתי מתוך האתר של TechKids ואני עדיין מתלבט/ת לגבי החוג. אשמח לעזרה!"
-            target="_blank"
-            style="background: #25D366; color: white; padding: 15px 40px; border-radius: 30px; font-weight: bold; font-size: 1.3rem; text-decoration: none; display: inline-block; box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);"
+            target="_blank" aria-label="פניה מהירה בוואטסאפ"
+            style="background: #25D366; color: white; padding: 15px 40px; border-radius: 30px; font-weight: bold; font-size: 1.3rem; text-decoration: none; display: inline-block; transition: .3s; box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);"
             class="hover-scale">פניה מהירה בוואטסאפ</a>
+
+        <div class="social-container">
+            <span style="color: #a0aab2; font-size: 1.2rem; font-weight: 500;">עקבו אחרינו גם ב:</span>
+            <a href="https://www.facebook.com/profile.php?id=61577472801722" target="_blank" aria-label="הפייסבוק שלנו"
+                class="social-link">
+                <svg viewBox="0 0 320 512">
+                    <path
+                        d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z" />
+                </svg>
+            </a>
+        </div>
     </div>
 
     <script>
-        // פונקציה לפתיחה וסגירה של תפריט ההמבורגר
+        // פונקציה לפתיחה וסגירה של תפריט ההמבורגר במובייל
         function toggleMenu() {
             const navLinks = document.getElementById('navLinks');
             const hamburger = document.querySelector('.hamburger');
 
-            // בודק אם אנחנו במובייל לפני שהוא מפעיל
-            if (window.innerWidth <= 900) {
-                navLinks.classList.toggle('active');
-                hamburger.classList.toggle('toggle');
-            }
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('toggle');
         }
+
+        // סגירת התפריט אוטומטית כשלוחצים על קישור (למובייל)
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                const navLinks = document.getElementById('navLinks');
+                if (window.innerWidth <= 900 && navLinks.classList.contains('active')) {
+                    toggleMenu();
+                }
+            });
+        });
 
         // מערכת מונה חכמה לאזור הסטטיסטיקה
         function startCounters() {
@@ -1026,6 +1089,8 @@
         // מערכת אנימציות גלילה והפעלת המונה
         document.addEventListener("DOMContentLoaded", function () {
             let countersStarted = false;
+
+            // הורדנו את ה-threshold ל-0.05 כדי שהאנימציה תעבוד טוב יותר במסכים קטנים
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -1038,7 +1103,7 @@
                         observer.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 0.15 });
+            }, { threshold: 0.05 });
 
             document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
         });
