@@ -852,6 +852,25 @@
             .bottom-actions .btn {
                 width: 100%;
             }
+
+            /* --- Mobile Carousel Fixes --- */
+            .reviews-carousel-outer {
+                padding: 0 35px;
+            }
+            .reviews-carousel-wrapper::before,
+            .reviews-carousel-wrapper::after {
+                width: 30px;
+            }
+            .review-card {
+                flex: 0 0 280px;
+                width: 280px;
+                padding: 20px 15px; 
+            }
+            .carousel-arrow {
+                width: 36px;
+                height: 36px;
+                font-size: 1.2rem;
+            }
         }
 
         /* --- Reviews Section --- */
@@ -1654,6 +1673,33 @@
 
             wrapper.addEventListener('mouseenter', stopAuto);
             wrapper.addEventListener('mouseleave', startAuto);
+
+            // Swipe support for mobile
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            wrapper.addEventListener('touchstart', e => {
+                touchStartX = e.changedTouches[0].screenX;
+                stopAuto();
+            }, { passive: true });
+
+            wrapper.addEventListener('touchend', e => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+                startAuto();
+            }, { passive: true });
+
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                // RTL layout: items go right-to-left
+                // Swipe Right (EndX > StartX) brings in Next items (from the left logical side)
+                // Swipe Left (StartX > EndX) brings in Prev items
+                if (touchEndX - touchStartX > swipeThreshold) {
+                    next();
+                } else if (touchStartX - touchEndX > swipeThreshold) {
+                    prev();
+                }
+            }
 
             window.addEventListener('resize', function () {
                 track.style.transition = 'none';
