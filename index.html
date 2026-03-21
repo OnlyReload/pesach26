@@ -22,7 +22,10 @@
     <meta property="og:description"
         content="חוגים לילדים בזום וקייטנות פסח חווייתיות. תכנות במיינקראפט ובינה מלאכותית בחוויה אחת מטורפת. נותרו מקומות בודדים למחזור הקרוב!">
     <meta property="og:url" content="https://onlyreload.github.io/pesach26/">
-    <meta property="og:image" content="https://onlyreload.github.io/pesach26/logo.png">
+    <meta property="og:image" itemprop="image" content="https://onlyreload.github.io/pesach26/logo.png?v=5">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="800">
+    <meta property="og:image:height" content="800">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="he_IL">
 
@@ -855,21 +858,47 @@
 
             /* --- Mobile Carousel Fixes --- */
             .reviews-carousel-outer {
-                padding: 0 35px;
+                padding: 0;
+                padding-bottom: 60px; /* Space for the arrows underneath */
             }
+
             .reviews-carousel-wrapper::before,
             .reviews-carousel-wrapper::after {
-                width: 30px;
+                width: 15px; /* Minimal gradient on mobile to avoid covering text */
             }
+
             .review-card {
-                flex: 0 0 280px;
-                width: 280px;
-                padding: 20px 15px; 
+                flex: 0 0 85vw; /* Native feeling sizing for mobile slider */
+                width: 85vw;
+                max-width: 320px;
+                padding: 20px;
+                margin: 0 auto; 
+                box-sizing: border-box;
             }
+            
+            .review-card .review-text {
+                font-size: 0.95rem;
+            }
+
             .carousel-arrow {
-                width: 36px;
-                height: 36px;
-                font-size: 1.2rem;
+                top: auto;
+                bottom: 0;
+                transform: none; /* remove exact Y translation */
+                width: 44px;
+                height: 44px;
+                font-size: 1.5rem;
+                background: rgba(0, 240, 255, 0.12);
+            }
+
+            /* Place arrows side by side at the bottom center */
+            .carousel-prev {
+                right: auto;
+                left: calc(50% + 10px); /* Physically on the right */
+            }
+
+            .carousel-next {
+                left: auto;
+                right: calc(50% + 10px); /* Physically on the left */
             }
         }
 
