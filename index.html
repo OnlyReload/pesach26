@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>טק-קידס | חוגי פסח בזום 2026 | בינה מלאכותית ומיינקראפט</title>
 
-    <!-- SEO Meta Tags -->
     <meta name="description"
         content="טק-קידס | חוגים לילדים בזום וקייטנות פסח 2026: למידת בינה מלאכותית ותכנות במיינקראפט. הפכו את הילדים ליוצרים טכנולוגיים!">
     <meta name="keywords"
@@ -16,7 +15,6 @@
     <meta name="application-name" content="טק-קידס - קייטנות פסח בזום">
     <meta name="apple-mobile-web-app-title" content="טק-קידס">
 
-    <!-- Open Graph for Social Media and Search appearance -->
     <meta property="og:site_name" content="טק-קידס - חוגים וקייטנות פסח לילדים בזום">
     <meta property="og:title" content="טק-קידס | חוגי פסח בזום 2026">
     <meta property="og:description"
@@ -29,11 +27,9 @@
     <meta property="og:type" content="website">
     <meta property="og:locale" content="he_IL">
 
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="apple-touch-icon" href="logo.png">
 
-    <!-- Structured Data for SEO (Site Name to replace "github documentation pages") -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -858,24 +854,24 @@
 
             /* --- Mobile Carousel Fixes --- */
             .reviews-carousel-outer {
-                padding: 0 45px; /* Exact space for arrows */
-                padding-bottom: 0; 
+                padding: 0 44px; /* exact space for the arrow buttons */
             }
 
+            /* Completely hide the fade gradients on mobile - they cover text */
             .reviews-carousel-wrapper::before,
             .reviews-carousel-wrapper::after {
-                width: 15px; 
+                display: none;
             }
 
             .review-card {
-                flex: 0 0 calc(100vw - 90px); 
-                width: calc(100vw - 90px);
-                max-width: 250px; /* Safety */
+                /* Card fills the space between the two arrows */
+                flex: 0 0 calc(100vw - 96px);
+                width: calc(100vw - 96px);
                 padding: 20px 15px;
-                margin: 0; 
                 box-sizing: border-box;
+                white-space: normal;
             }
-            
+
             .review-card .review-text {
                 font-size: 0.95rem;
             }
@@ -883,20 +879,21 @@
             .carousel-arrow {
                 top: 50%;
                 bottom: auto;
-                transform: translateY(-50%); 
-                width: 38px;
-                height: 38px;
-                font-size: 1.2rem;
-                background: rgba(0, 240, 255, 0.12);
+                transform: translateY(-50%);
+                width: 40px;
+                height: 40px;
+                font-size: 1.3rem;
+                background: rgba(0, 240, 255, 0.15);
             }
 
+            /* RTL: prev is on the right side of outer container, next on the left */
             .carousel-prev {
-                right: 3px;
-                left: auto; 
+                right: 2px;
+                left: auto;
             }
 
             .carousel-next {
-                left: 3px;
+                left: 2px;
                 right: auto;
             }
         }
@@ -1289,8 +1286,10 @@
                 <button class="btn-small mc-btn"
                     onclick="document.getElementById('minecraft').scrollIntoView({behavior: 'smooth'});">למסלול
                     מיינקראפט ↓</button>
-                <button class="btn-small" style="background: rgba(0, 240, 255, 0.2); border: 1px solid var(--ai-blue); color: #fff;"
-                    onclick="document.getElementById('ai-chat').scrollIntoView({behavior: 'smooth'});">העוזר החכם 🤖</button>
+                <button class="btn-small"
+                    style="background: rgba(0, 240, 255, 0.2); border: 1px solid var(--ai-blue); color: #fff;"
+                    onclick="document.getElementById('ai-chat').scrollIntoView({behavior: 'smooth'});">העוזר החכם
+                    🤖</button>
             </div>
         </div>
     </header>
@@ -1397,7 +1396,6 @@
         </div>
     </section>
 
-    <!-- Reviews / Social Proof Section -->
     <section class="reviews-section fade-in">
         <h2>🌟 הורים מספרים</h2>
         <div class="reviews-carousel-outer">
@@ -1654,7 +1652,7 @@
                 const cardNode = track.children[0];
                 const cardW = cardNode.getBoundingClientRect().width;
                 const fullCardW = cardW + GAP;
-                
+
                 const wrapperW = wrapper.getBoundingClientRect().width;
                 const centerOffset = (wrapperW - cardW) / 2;
 
