@@ -852,168 +852,142 @@
                 width: 100%;
             }
 
-            /* === Mobile Carousel: Use native CSS scroll-snap, skip JS === */
-            .carousel-arrow { display: none; }
-
-            .reviews-carousel-outer { padding: 0; }
-
-            .reviews-carousel-wrapper::before,
-            .reviews-carousel-wrapper::after { display: none; }
-
-            /* Native scroll-snap - always works, no math needed */
-            .reviews-carousel-wrapper {
-                overflow-x: auto;
-                overflow-y: hidden;
-                scroll-snap-type: x mandatory;
-                -webkit-overflow-scrolling: touch;
-                scrollbar-width: none;
-            }
-            .reviews-carousel-wrapper::-webkit-scrollbar { display: none; }
-
-            /* JS is skipped on mobile, so reset transform that JS would have set */
-            .reviews-grid {
-                transform: none !important;
-                transition: none !important;
-                padding: 0 10vw;
-                gap: 15px;
-            }
-
-            .review-card {
-                flex: 0 0 80vw;
-                width: 80vw;
-                max-width: 340px;
-                scroll-snap-align: center;
-                padding: 22px 18px;
-                box-sizing: border-box;
-            }
+            /* Testimonials - mobile */
+            .testimonials-section { padding: 0 10px; }
+            .testimonial-stage { min-height: 220px; }
+            .testimonial-quote p.quote-text { font-size: 1.1rem; }
+            .tslider-btn { width: 38px; height: 38px; font-size: 1.5rem; }
+            .big-quote { font-size: 5rem; }
         }
 
-        /* --- Reviews Section --- */
-        .reviews-section {
-            max-width: 1100px;
+        /* --- Testimonials Section (replaces old carousel) --- */
+        .testimonials-section {
+            max-width: 750px;
             margin: 60px auto;
             padding: 0 20px;
             text-align: center;
         }
 
-        .reviews-section h2 {
+        .testimonials-section h2 {
             font-family: 'Rubik', sans-serif;
             font-size: 2.5rem;
             margin-bottom: 40px;
             color: #fff;
         }
 
-        /* Reviews Carousel */
-        .reviews-carousel-outer {
-            position: relative;
-            padding: 0 60px;
+        .testimonials-slider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
-        .carousel-arrow {
+        .testimonial-stage {
+            flex: 1;
+            position: relative;
+            min-height: 260px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .testimonial-quote {
             position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 46px;
-            height: 46px;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 35px;
+            background: linear-gradient(145deg, rgba(30,34,53,0.9), rgba(15,17,26,0.95));
+            border-radius: 20px;
+            border: 1px solid rgba(0,240,255,0.12);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            pointer-events: none;
+        }
+
+        .testimonial-quote.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .big-quote {
+            font-family: Georgia, serif;
+            font-size: 6rem;
+            color: rgba(0, 240, 255, 0.2);
+            line-height: 0.6;
+            display: block;
+            margin-bottom: 20px;
+            user-select: none;
+        }
+
+        .quote-stars {
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            text-shadow: 0 0 8px rgba(255,215,0,0.4);
+        }
+
+        .quote-text {
+            font-size: 1.2rem;
+            color: #d1d5db;
+            line-height: 1.75;
+            font-style: italic;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .quote-author {
+            font-weight: bold;
+            font-size: 0.95rem;
+            color: var(--ai-blue);
+        }
+
+        .tslider-btn {
+            flex-shrink: 0;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             background: rgba(0, 240, 255, 0.08);
-            border: 1px solid rgba(0, 240, 255, 0.35);
+            border: 1px solid rgba(0, 240, 255, 0.3);
             color: var(--ai-blue);
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             line-height: 1;
             cursor: pointer;
-            z-index: 5;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: background 0.3s, box-shadow 0.3s;
-        }
-
-        .carousel-arrow:hover {
-            background: rgba(0, 240, 255, 0.2);
-            box-shadow: 0 0 14px rgba(0, 240, 255, 0.35);
-        }
-
-        /* RTL: next (forward) is visually on the left, prev on the right */
-        .carousel-prev {
-            right: 0;
-        }
-
-        .carousel-next {
-            left: 0;
-        }
-
-        .reviews-carousel-wrapper {
-            overflow: hidden;
-            position: relative;
-            width: 100%;
-        }
-
-        .reviews-carousel-wrapper::before,
-        .reviews-carousel-wrapper::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 60px;
             z-index: 2;
-            pointer-events: none;
         }
 
-        .reviews-carousel-wrapper::before {
-            right: 0;
-            background: linear-gradient(to left, var(--bg-color) 0%, transparent 100%);
+        .tslider-btn:hover {
+            background: rgba(0, 240, 255, 0.18);
+            box-shadow: 0 0 14px rgba(0, 240, 255, 0.3);
         }
 
-        .reviews-carousel-wrapper::after {
-            left: 0;
-            background: linear-gradient(to right, var(--bg-color) 0%, transparent 100%);
-        }
-
-        .reviews-grid {
+        .tslider-dots {
             display: flex;
-            gap: 25px;
-            width: max-content;
-            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            will-change: transform;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 22px;
         }
 
-        .review-card {
-            background: linear-gradient(145deg, rgba(30, 34, 53, 0.9), rgba(15, 17, 26, 0.95));
-            border-radius: 16px;
-            padding: 30px 25px;
-            border: 1px solid rgba(0, 240, 255, 0.15);
-            text-align: right;
-            position: relative;
-            flex: 0 0 320px;
-            width: 320px;
-            transition: box-shadow 0.3s ease;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        .tslider-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(0, 240, 255, 0.25);
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+            padding: 0;
         }
 
-        .review-card:hover {
-            box-shadow: 0 15px 35px rgba(0, 240, 255, 0.15);
-        }
-
-        .review-stars {
-            color: var(--gold);
-            font-size: 1.2rem;
-            margin-bottom: 14px;
-            text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
-        }
-
-        .review-text {
-            font-size: 1.05rem;
-            color: #d1d5db;
-            line-height: 1.7;
-            margin-bottom: 18px;
-            font-style: italic;
-        }
-
-        .review-author {
-            font-weight: bold;
-            font-size: 0.95rem;
-            color: var(--ai-blue);
+        .tslider-dot.active {
+            background: var(--ai-blue);
+            transform: scale(1.4);
         }
 
         .price-subtitle {
@@ -1386,57 +1360,57 @@
         </div>
     </section>
 
-    <section class="reviews-section fade-in">
+    <section class="testimonials-section fade-in" id="reviews">
         <h2>🌟 הורים מספרים</h2>
-        <div class="reviews-carousel-outer">
-            <button class="carousel-arrow carousel-prev" id="reviewPrev" aria-label="רייה קודמת">&#8250;</button>
-            <button class="carousel-arrow carousel-next" id="reviewNext" aria-label="רייה הבאה">&#8249;</button>
-            <div class="reviews-carousel-wrapper">
-                <div class="reviews-grid" id="reviewsTrack">
-                    <div class="review-card">
-                        <div class="review-stars">★★★★★</div>
-                        <p class="review-text">"תודה רבה. החוג היה מצוין ונהניתי מאוד, למדתי המון דברים חדשים ואני בטוח
-                            שאשתמש בהם."</p>
-                        <div class="review-author">— הורה של תלמיד</div>
-                    </div>
-                    <div class="review-card">
-                        <div class="review-stars">★★★★★</div>
-                        <p class="review-text">"היי אופק, מאוד לא מובן מאליו שבני נהנה בקורס שלך. תודה רבה רבה, הקורס
-                            היה מעולה!"</p>
-                        <div class="review-author">— אמא של בן 10</div>
-                    </div>
-                    <div class="review-card">
-                        <div class="review-stars">★★★★★</div>
-                        <p class="review-text">"היי אופק, תודה רבה על הקורס. היה לילדי מאוד מעניין וגם אני צפיתי מהצד
-                            והתעניינתי :), בהצלחה ונשמח להירשם לעוד קורסים בעתיד."</p>
-                        <div class="review-author">— אבא של בת 9</div>
-                    </div>
-                    <div class="review-card">
-                        <div class="review-stars">★★★★★</div>
-                        <p class="review-text">"היי אופק, הבן שלי עף על הקורסים שלך! תודה רבה."</p>
-                        <div class="review-author">— אמא של בן 11</div>
-                    </div>
-                    <div class="review-card">
-                        <div class="review-stars">★★★★★</div>
-                        <p class="review-text">"שילוב המיינקראפט עם הבינה המלאכותית היה גאוני! הבת שלי דיברה על זה כל
-                            השבוע אחרי הקורס. מדהים!"</p>
-                        <div class="review-author">— אמא של בת 10</div>
-                    </div>
-                    <div class="review-card">
-                        <div class="review-stars">★★★★★</div>
-                        <p class="review-text">"מה שהפתיע אותי ביותר זו הסבלנות ודרך ההסבר של המדריכים. כל ילד קיבל
-                            תשומת לב אישית, והרגשנו שבן שלנו בידיים טובות."</p>
-                        <div class="review-author">— הורה מרוצה</div>
-                    </div>
-                    <div class="review-card">
-                        <div class="review-stars">★★★★★</div>
-                        <p class="review-text">"הרשמנו את הילד בהיסוס כי לא ידענו אם יתמיד, אבל הוא כבר מבקש להירשם
-                            לקורס הבא! ממליצים בחום."</p>
-                        <div class="review-author">— משפחת כהן</div>
-                    </div>
+        <div class="testimonials-slider">
+            <button class="tslider-btn" id="tPrev" aria-label="ביקורת קודמת">&#8250;</button>
+            <div class="testimonial-stage" id="testimonialStage">
+                <div class="testimonial-quote active">
+                    <span class="big-quote">"</span>
+                    <div class="quote-stars">★★★★★</div>
+                    <p class="quote-text">תודה רבה. החוג היה מצוין ונהניתי מאוד, למדתי המון דברים חדשים ואני בטוח שאשתמש בהם.</p>
+                    <span class="quote-author">— הורה של תלמיד</span>
+                </div>
+                <div class="testimonial-quote">
+                    <span class="big-quote">"</span>
+                    <div class="quote-stars">★★★★★</div>
+                    <p class="quote-text">היי אופק, מאוד לא מובן מאליו שבני נהנה בקורס שלך. תודה רבה רבה, הקורס היה מעולה!</p>
+                    <span class="quote-author">— אמא של בן 10</span>
+                </div>
+                <div class="testimonial-quote">
+                    <span class="big-quote">"</span>
+                    <div class="quote-stars">★★★★★</div>
+                    <p class="quote-text">היי אופק, תודה רבה על הקורס. היה לילדי מאוד מעניין וגם אני צפיתי מהצד והתעניינתי, בהצלחה ונשמח להירשם לעוד קורסים בעתיד.</p>
+                    <span class="quote-author">— אבא של בת 9</span>
+                </div>
+                <div class="testimonial-quote">
+                    <span class="big-quote">"</span>
+                    <div class="quote-stars">★★★★★</div>
+                    <p class="quote-text">היי אופק, הבן שלי עף על הקורסים שלך! תודה רבה.</p>
+                    <span class="quote-author">— אמא של בן 11</span>
+                </div>
+                <div class="testimonial-quote">
+                    <span class="big-quote">"</span>
+                    <div class="quote-stars">★★★★★</div>
+                    <p class="quote-text">שילוב המיינקראפט עם הבינה המלאכותית היה גאוני! הבת שלי דיברה על זה כל השבוע אחרי הקורס. מדהים!</p>
+                    <span class="quote-author">— אמא של בת 10</span>
+                </div>
+                <div class="testimonial-quote">
+                    <span class="big-quote">"</span>
+                    <div class="quote-stars">★★★★★</div>
+                    <p class="quote-text">מה שהפתיע אותי ביותר זו הסבלנות ודרך ההסבר של המדריכים. כל ילד קיבל תשומת לב אישית, והרגשנו שבן שלנו בידיים טובות.</p>
+                    <span class="quote-author">— הורה מרוצה</span>
+                </div>
+                <div class="testimonial-quote">
+                    <span class="big-quote">"</span>
+                    <div class="quote-stars">★★★★★</div>
+                    <p class="quote-text">הרשמנו את הילד בהיסוס כי לא ידענו אם יתמיד, אבל הוא כבר מבקש להירשם לקורס הבא! ממליצים בחום.</p>
+                    <span class="quote-author">— משפחת כהן</span>
                 </div>
             </div>
+            <button class="tslider-btn" id="tNext" aria-label="ביקורת הבאה">&#8249;</button>
         </div>
+        <div class="tslider-dots" id="tDots"></div>
     </section>
 
     <div class="stats-section fade-in" id="stats">
@@ -1608,131 +1582,61 @@
 
             document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
         });
-        // Reviews Infinite Carousel with Arrows (desktop only - mobile uses CSS scroll-snap)
+        // Testimonials Fade Slider
         (function () {
-            const track = document.getElementById('reviewsTrack');
-            if (!track) return;
-            // On mobile, CSS scroll-snap handles it naturally — skip all JS
-            if (window.innerWidth <= 768) return;
-            const wrapper = track.parentElement;
-            const GAP = 25;
-            const AUTO_DELAY = 4000;
-
-            const originals = Array.from(track.children);
-            const total = originals.length;
-
-            // Prepend clones for backward loop
-            originals.slice().reverse().forEach(card => {
-                const clone = card.cloneNode(true);
-                clone.setAttribute('aria-hidden', 'true');
-                track.insertBefore(clone, track.firstChild);
-            });
-
-            // Append clones for forward loop
-            originals.forEach(card => {
-                const clone = card.cloneNode(true);
-                clone.setAttribute('aria-hidden', 'true');
-                track.appendChild(clone);
-            });
-
-            // Start centered on the original set (index == total)
-            let currentIndex = total;
+            const stage = document.getElementById('testimonialStage');
+            if (!stage) return;
+            const quotes = Array.from(stage.querySelectorAll('.testimonial-quote'));
+            const dotsContainer = document.getElementById('tDots');
+            const AUTO_DELAY = 5000;
+            let current = 0;
             let autoTimer = null;
-            let isTransitioning = false;
 
-            function setPosition(index, animate) {
-                const cardNode = track.children[0];
-                const cardW = cardNode.getBoundingClientRect().width;
-                const fullCardW = cardW + GAP;
-
-                const wrapperW = wrapper.getBoundingClientRect().width;
-                const centerOffset = (wrapperW - cardW) / 2;
-
-                const baseOffset = index * fullCardW;
-                const finalOffset = baseOffset - centerOffset;
-
-                track.style.transition = animate ? 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)' : 'none';
-                track.style.transform = `translateX(${finalOffset}px)`;
-            }
-
-            setPosition(currentIndex, false);
-
-            track.addEventListener('transitionend', function () {
-                isTransitioning = false;
-
-                if (currentIndex >= total * 2) {
-                    currentIndex = currentIndex - total;
-                    setPosition(currentIndex, false);
-                } else if (currentIndex <= 0) {
-                    currentIndex = currentIndex + total;
-                    setPosition(currentIndex, false);
-                }
+            // Build dots
+            quotes.forEach((_, i) => {
+                const dot = document.createElement('button');
+                dot.className = 'tslider-dot' + (i === 0 ? ' active' : '');
+                dot.addEventListener('click', () => { goTo(i); resetAuto(); });
+                dotsContainer.appendChild(dot);
             });
 
-            function goTo(index, animate) {
-                if (isTransitioning) return;
-                isTransitioning = true;
-                currentIndex = index;
-                setPosition(currentIndex, animate !== false);
+            function getDots() { return dotsContainer.querySelectorAll('.tslider-dot'); }
+
+            function goTo(index) {
+                quotes[current].classList.remove('active');
+                getDots()[current].classList.remove('active');
+                current = (index + quotes.length) % quotes.length;
+                quotes[current].classList.add('active');
+                getDots()[current].classList.add('active');
             }
 
-            function next() { goTo(currentIndex + 1); }
-            function prev() { goTo(currentIndex - 1); }
+            function next() { goTo(current + 1); }
+            function prev() { goTo(current - 1); }
 
-            function startAuto() {
-                if (!autoTimer) autoTimer = setInterval(next, AUTO_DELAY);
-            }
-            function stopAuto() {
-                if (autoTimer) {
-                    clearInterval(autoTimer);
-                    autoTimer = null;
-                }
-            }
-            function resetAuto() {
-                stopAuto();
-                startAuto();
-            }
+            function startAuto() { if (!autoTimer) autoTimer = setInterval(next, AUTO_DELAY); }
+            function stopAuto() { clearInterval(autoTimer); autoTimer = null; }
+            function resetAuto() { stopAuto(); startAuto(); }
 
-            document.getElementById('reviewNext').addEventListener('click', function () { next(); resetAuto(); });
-            document.getElementById('reviewPrev').addEventListener('click', function () { prev(); resetAuto(); });
+            document.getElementById('tPrev').addEventListener('click', () => { prev(); resetAuto(); });
+            document.getElementById('tNext').addEventListener('click', () => { next(); resetAuto(); });
 
-            wrapper.addEventListener('mouseenter', stopAuto);
-            wrapper.addEventListener('mouseleave', startAuto);
+            // Pause on hover
+            stage.addEventListener('mouseenter', stopAuto);
+            stage.addEventListener('mouseleave', startAuto);
 
-            // Swipe support for mobile
+            // Touch swipe
             let touchStartX = 0;
-            let touchEndX = 0;
-
-            wrapper.addEventListener('touchstart', e => {
-                touchStartX = e.changedTouches[0].screenX;
-                stopAuto();
-            }, { passive: true });
-
-            wrapper.addEventListener('touchend', e => {
-                touchEndX = e.changedTouches[0].screenX;
-                handleSwipe();
+            stage.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; stopAuto(); }, { passive: true });
+            stage.addEventListener('touchend', e => {
+                const diff = touchStartX - e.changedTouches[0].screenX;
+                if (Math.abs(diff) > 40) diff > 0 ? next() : prev();
                 startAuto();
             }, { passive: true });
-
-            function handleSwipe() {
-                const swipeThreshold = 50;
-                // RTL layout: items go right-to-left
-                // Swipe Right (EndX > StartX) brings in Next items (from the left logical side)
-                // Swipe Left (StartX > EndX) brings in Prev items
-                if (touchEndX - touchStartX > swipeThreshold) {
-                    next();
-                } else if (touchStartX - touchEndX > swipeThreshold) {
-                    prev();
-                }
-            }
-
-            window.addEventListener('resize', function () {
-                track.style.transition = 'none';
-                setPosition(currentIndex, false);
-            });
 
             startAuto();
         })();
+
+
 
         // --- AI Chat Logic (Gemini API) ---
         // --- AI Chat Logic (Gemini API) ---
