@@ -10,7 +10,8 @@
     <!-- SEO Meta Tags -->
     <meta name="description"
         content="טק-קידס | חוגים לילדים בזום וקייטנות פסח 2026: למידת בינה מלאכותית ותכנות במיינקראפט. הפכו את הילדים ליוצרים טכנולוגיים!">
-    <meta name="keywords" content="חוגים לילדים בזום, חוגי פסח לילדים, קייטנות פסח בזום, קייטנת זום, חוג מיינקראפט, חוג בינה מלאכותית, קורס טכנולוגיה לילדים, חוגי פסח 2026, קייטנות מחשבים, חוגי אונליין לילדים, חשיבה תכנותית">
+    <meta name="keywords"
+        content="חוגים לילדים בזום, חוגי פסח לילדים, קייטנות פסח בזום, קייטנת זום, חוג מיינקראפט, חוג בינה מלאכותית, קורס טכנולוגיה לילדים, חוגי פסח 2026, קייטנות מחשבים, חוגי אונליין לילדים, חשיבה תכנותית">
     <meta name="author" content="טק-קידס">
     <meta name="application-name" content="טק-קידס - קייטנות פסח בזום">
     <meta name="apple-mobile-web-app-title" content="טק-קידס">
@@ -799,7 +800,7 @@
             }
 
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 1.8rem;
             }
 
             .hero p {
@@ -851,6 +852,317 @@
                 width: 100%;
             }
         }
+
+        /* --- Reviews Section --- */
+        .reviews-section {
+            max-width: 1100px;
+            margin: 60px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .reviews-section h2 {
+            font-family: 'Rubik', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #fff;
+        }
+
+        /* Reviews Carousel */
+        .reviews-carousel-outer {
+            position: relative;
+            padding: 0 60px;
+        }
+
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: rgba(0, 240, 255, 0.08);
+            border: 1px solid rgba(0, 240, 255, 0.35);
+            color: var(--ai-blue);
+            font-size: 1.6rem;
+            line-height: 1;
+            cursor: pointer;
+            z-index: 5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+
+        .carousel-arrow:hover {
+            background: rgba(0, 240, 255, 0.2);
+            box-shadow: 0 0 14px rgba(0, 240, 255, 0.35);
+        }
+
+        /* RTL: next (forward) is visually on the left, prev on the right */
+        .carousel-prev { right: 0; }
+        .carousel-next { left: 0; }
+
+        .reviews-carousel-wrapper {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+        }
+
+        .reviews-carousel-wrapper::before,
+        .reviews-carousel-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 60px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .reviews-carousel-wrapper::before {
+            right: 0;
+            background: linear-gradient(to left, var(--bg-color) 0%, transparent 100%);
+        }
+
+        .reviews-carousel-wrapper::after {
+            left: 0;
+            background: linear-gradient(to right, var(--bg-color) 0%, transparent 100%);
+        }
+
+        .reviews-grid {
+            display: flex;
+            gap: 25px;
+            width: max-content;
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: transform;
+        }
+
+        .review-card {
+            background: linear-gradient(145deg, rgba(30, 34, 53, 0.9), rgba(15, 17, 26, 0.95));
+            border-radius: 16px;
+            padding: 30px 25px;
+            border: 1px solid rgba(0, 240, 255, 0.15);
+            text-align: right;
+            position: relative;
+            flex: 0 0 320px;
+            width: 320px;
+            transition: box-shadow 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .review-card:hover {
+            box-shadow: 0 15px 35px rgba(0, 240, 255, 0.15);
+        }
+
+        .review-stars {
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin-bottom: 14px;
+            text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+        }
+
+        .review-text {
+            font-size: 1.05rem;
+            color: #d1d5db;
+            line-height: 1.7;
+            margin-bottom: 18px;
+            font-style: italic;
+        }
+
+        .review-author {
+            font-weight: bold;
+            font-size: 0.95rem;
+            color: var(--ai-blue);
+        }
+
+        .price-subtitle {
+            font-size: 0.95rem;
+            color: #a0aab2;
+            margin-top: 8px;
+            font-weight: 500;
+        }
+
+        /* --- AI Chat Section --- */
+        .ai-chat-section {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .chat-container {
+            background: linear-gradient(145deg, rgba(30,34,53,0.95), rgba(15,17,26,0.98));
+            border-radius: 20px;
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(0, 240, 255, 0.05);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .chat-header {
+            background: linear-gradient(90deg, #1e2235, #001f33);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .chat-header h3 {
+            color: #fff;
+            font-size: 1.5rem;
+            margin: 0;
+            font-family: 'Rubik', sans-serif;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+        }
+
+        .chat-header .pulse-dot {
+            width: 12px;
+            height: 12px;
+            background-color: #00f0ff;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #00f0ff;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%   { transform: scale(0.9); box-shadow: 0 0 10px rgba(0,240,255,0.7); }
+            50%  { transform: scale(1.1); box-shadow: 0 0 20px rgba(0,240,255,1); }
+            100% { transform: scale(0.9); box-shadow: 0 0 10px rgba(0,240,255,0.7); }
+        }
+
+        .chat-box {
+            height: 350px;
+            overflow-y: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            scroll-behavior: smooth;
+        }
+        
+        .chat-box::-webkit-scrollbar {
+            width: 8px;
+        }
+        .chat-box::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.05);
+        }
+        .chat-box::-webkit-scrollbar-thumb {
+            background: rgba(0, 240, 255, 0.3);
+            border-radius: 10px;
+        }
+
+        .msg-bubble {
+            max-width: 80%;
+            padding: 12px 18px;
+            border-radius: 20px;
+            font-size: 1.1rem;
+            line-height: 1.5;
+            animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            opacity: 0;
+            transform: translateY(15px);
+        }
+
+        @keyframes popIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .msg-ai {
+            align-self: flex-start;
+            background: rgba(0, 240, 255, 0.1);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            color: #e0f7fa;
+            border-bottom-right-radius: 5px;
+            white-space: pre-wrap;
+        }
+
+        .msg-user {
+            align-self: flex-end;
+            background: linear-gradient(135deg, var(--mc-green), var(--mc-dark));
+            color: #fff;
+            border-bottom-left-radius: 5px;
+            white-space: pre-wrap;
+        }
+
+        .chat-input-area {
+            display: flex;
+            padding: 15px;
+            background: rgba(15, 17, 26, 0.9);
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .chat-input {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            padding: 12px 20px;
+            color: #fff;
+            font-size: 1.1rem;
+            outline: none;
+            transition: 0.3s;
+            font-family: inherit;
+        }
+
+        .chat-input:focus {
+            border-color: var(--ai-blue);
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+        }
+
+        .chat-send-btn {
+            background: var(--ai-blue);
+            color: #000;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+
+        .chat-send-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
+        }
+        
+        .chat-send-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .typing-indicator {
+            display: none;
+            align-self: flex-start;
+            padding: 10px 15px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            border-bottom-right-radius: 5px;
+            color: #a0aab2;
+            font-size: 0.9rem;
+        }
+        
+        .typing-indicator span {
+            display: inline-block;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+        .typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
+        .typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
+
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
     </style>
 </head>
 
@@ -878,7 +1190,7 @@
     </nav>
 
     <header class="hero">
-        <div class="hero-content fade-in">
+        <div class="hero-content">
             <div class="top-donation-badge">
                 ❤️ 10% מההכנסות יתרמו לחיילי צה"ל ❤️
             </div>
@@ -955,11 +1267,12 @@
         <div class="price-card">
             <h3>מחיר הקורס</h3>
             <div class="price-amount">₪239</div>
+            <p class="price-subtitle">לכל קורס בנפרד (3 מפגשים)</p>
         </div>
         <div class="price-card highlight">
             <h3>מבצע חבר מביא חבר</h3>
             <div class="price-amount">₪189</div>
-            <p style="margin-top: 10px; color: #ddd;">למשתתף (במקום 239 ש"ח)</p>
+            <p style="margin-top: 10px; color: #ddd;">לכל קורס למשתתף (במקום ₪239)</p>
         </div>
     </section>
 
@@ -998,13 +1311,61 @@
         </div>
     </section>
 
+    <!-- Reviews / Social Proof Section -->
+    <section class="reviews-section fade-in">
+        <h2>🌟 הורים מספרים</h2>
+        <div class="reviews-carousel-outer">
+            <button class="carousel-arrow carousel-prev" id="reviewPrev" aria-label="רייה קודמת">&#8250;</button>
+            <button class="carousel-arrow carousel-next" id="reviewNext" aria-label="רייה הבאה">&#8249;</button>
+            <div class="reviews-carousel-wrapper">
+                <div class="reviews-grid" id="reviewsTrack">
+                    <div class="review-card">
+                        <div class="review-stars">★★★★★</div>
+                        <p class="review-text">"תודה רבה. החוג היה מצוין ונהניתי מאוד, למדתי המון דברים חדשים ואני בטוח שאשתמש בהם."</p>
+                        <div class="review-author">— הורה של תלמיד</div>
+                    </div>
+                    <div class="review-card">
+                        <div class="review-stars">★★★★★</div>
+                        <p class="review-text">"היי אופק, מאוד לא מובן מאליו שבני נהנה בקורס שלך. תודה רבה רבה, הקורס היה מעולה!"</p>
+                        <div class="review-author">— אמא של בן 10</div>
+                    </div>
+                    <div class="review-card">
+                        <div class="review-stars">★★★★★</div>
+                        <p class="review-text">"היי אופק, תודה רבה על הקורס. היה לילדי מאוד מעניין וגם אני צפיתי מהצד והתעניינתי :), בהצלחה ונשמח להירשם לעוד קורסים בעתיד."</p>
+                        <div class="review-author">— אבא של בת 9</div>
+                    </div>
+                    <div class="review-card">
+                        <div class="review-stars">★★★★★</div>
+                        <p class="review-text">"היי אופק, הבן שלי עף על הקורסים שלך! תודה רבה."</p>
+                        <div class="review-author">— אמא של בן 11</div>
+                    </div>
+                    <div class="review-card">
+                        <div class="review-stars">★★★★★</div>
+                        <p class="review-text">"שילוב המיינקראפט עם הבינה המלאכותית היה גאוני! הבת שלי דיברה על זה כל השבוע אחרי הקורס. מדהים!"</p>
+                        <div class="review-author">— אמא של בת 10</div>
+                    </div>
+                    <div class="review-card">
+                        <div class="review-stars">★★★★★</div>
+                        <p class="review-text">"מה שהפתיע אותי ביותר זו הסבלנות ודרך ההסבר של המדריכים. כל ילד קיבל תשומת לב אישית, והרגשנו שבן שלנו בידיים טובות."</p>
+                        <div class="review-author">— הורה מרוצה</div>
+                    </div>
+                    <div class="review-card">
+                        <div class="review-stars">★★★★★</div>
+                        <p class="review-text">"הרשמנו את הילד בהיסוס כי לא ידענו אם יתמיד, אבל הוא כבר מבקש להירשם לקורס הבא! ממליצים בחום."</p>
+                        <div class="review-author">— משפחת כהן</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <div class="stats-section fade-in" id="stats">
         <div class="stat-card">
             <div class="stat-num" data-target="5" data-suffix="+">0</div>
             <div class="stat-text">שנות ניסיון בהדרכה</div>
         </div>
         <div class="stat-card">
-            <div class="stat-num" data-target="6" data-suffix="">0</div>
+            <div class="stat-num" data-target="12" data-suffix="">0</div>
             <div class="stat-text">מחזורים בהצלחה</div>
         </div>
         <div class="stat-card">
@@ -1044,6 +1405,32 @@
                 </p>
             </div>
 
+        </div>
+    </section>
+
+    <section class="ai-chat-section fade-in" id="ai-chat">
+        <div class="chat-container">
+            <div class="chat-header">
+                <div class="pulse-dot"></div>
+                <h3>העוזר החכם העוזר החכם של TechKids</h3>
+            </div>
+            
+            <div class="chat-box" id="chatBox">
+                <div class="msg-bubble msg-ai">שלום! אני העוזר הווירטואלי של קייטנת TechKids. אפשר לשאול אותי על החוגים, שעות הפעילות, מחירים, או תכנים. במה אוכל לעזור? 🤖</div>
+                <div class="typing-indicator" id="typingIndicator">
+                    מקליד <span>.</span><span>.</span><span>.</span>
+                </div>
+            </div>
+
+            <div class="chat-input-area">
+                <input type="text" id="chatInput" class="chat-input" placeholder="הקלד/י שאלה כאן..." autocomplete="off" onkeypress="handleChatEnter(event)">
+                <button class="chat-send-btn" id="chatSendBtn" onclick="sendChatMessage()" aria-label="שלח הודעה">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                </button>
+            </div>
         </div>
     </section>
 
@@ -1138,6 +1525,191 @@
 
             document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
         });
+        // Reviews Infinite Carousel with Arrows
+        (function () {
+            const track = document.getElementById('reviewsTrack');
+            if (!track) return;
+            const wrapper = track.parentElement;
+            const GAP = 25;
+            const AUTO_DELAY = 4000;
+
+            const originals = Array.from(track.children);
+            const total = originals.length;
+
+            // Prepend clones for backward loop
+            originals.slice().reverse().forEach(card => {
+                const clone = card.cloneNode(true);
+                clone.setAttribute('aria-hidden', 'true');
+                track.insertBefore(clone, track.firstChild);
+            });
+
+            // Append clones for forward loop
+            originals.forEach(card => {
+                const clone = card.cloneNode(true);
+                clone.setAttribute('aria-hidden', 'true');
+                track.appendChild(clone);
+            });
+
+            // Start centered on the original set (index == total)
+            let currentIndex = total;
+            let autoTimer = null;
+            let isTransitioning = false;
+
+            function getCardWidth() {
+                return track.children[0].getBoundingClientRect().width + GAP;
+            }
+
+            function setPosition(index, animate) {
+                // In RTL, translating positively moves tracking to the right, showing the next set of cards visually to the left.
+                const offset = index * getCardWidth();
+                track.style.transition = animate ? 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)' : 'none';
+                track.style.transform = `translateX(${offset}px)`;
+            }
+
+            setPosition(currentIndex, false);
+
+            track.addEventListener('transitionend', function () {
+                isTransitioning = false;
+                
+                if (currentIndex >= total * 2) {
+                    currentIndex = currentIndex - total;
+                    setPosition(currentIndex, false);
+                } else if (currentIndex <= 0) {
+                    currentIndex = currentIndex + total;
+                    setPosition(currentIndex, false);
+                }
+            });
+
+            function goTo(index, animate) {
+                if (isTransitioning) return;
+                isTransitioning = true;
+                currentIndex = index;
+                setPosition(currentIndex, animate !== false);
+            }
+
+            function next() { goTo(currentIndex + 1); }
+            function prev() { goTo(currentIndex - 1); }
+
+            function startAuto() {
+                if (!autoTimer) autoTimer = setInterval(next, AUTO_DELAY);
+            }
+            function stopAuto() {
+                if (autoTimer) {
+                    clearInterval(autoTimer);
+                    autoTimer = null;
+                }
+            }
+            function resetAuto() {
+                stopAuto();
+                startAuto();
+            }
+
+            document.getElementById('reviewNext').addEventListener('click', function () { next(); resetAuto(); });
+            document.getElementById('reviewPrev').addEventListener('click', function () { prev(); resetAuto(); });
+
+            wrapper.addEventListener('mouseenter', stopAuto);
+            wrapper.addEventListener('mouseleave', startAuto);
+            
+            window.addEventListener('resize', function() {
+                track.style.transition = 'none';
+                setPosition(currentIndex, false);
+            });
+
+            startAuto();
+        })();
+
+        // --- AI Chat Logic (Gemini API) ---
+        const API_KEY = "AIzaSyDlcOBPGy4Zwh9m7BYpf-Kg9r4uWLD0txk";
+        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`;
+        
+        const chatBox = document.getElementById('chatBox');
+        const chatInput = document.getElementById('chatInput');
+        const typingIndicator = document.getElementById('typingIndicator');
+        const sendBtn = document.getElementById('chatSendBtn');
+
+        let chatHistory = [
+            {
+                "role": "user",
+                "parts": [{ "text": "אתה עוזר וירטואלי של קייטנת TechKids לפסח 2026. עליך לענות באדיבות, בעברית תקינה ובקצרה, במקסימום 2-3 משפטים. פרטי הקייטנה: נלמד מיינקראפט ובינה מלאכותית בשני קורסים נפרדים. תאריכים 24-26 למרץ. בינה מלאכותית ב-17:00, מיינקראפט ב-18:00. מחיר לפסח: 239 שקלים למסלול אחד. אם נרשמים עם חבר ('חבר מביא חבר'), זה עולה 189 שקלים. הקייטנה מועברת בזום, דורשת מחשב (לא טאבלט/סמארטפון). עליך לעודד רישום בסיום התשובה או לכוון לכפתור הווטסאפ. השב באישור שהבנת לתחילת דיאלוג." }]
+            },
+            {
+                "role": "model",
+                "parts": [{ "text": "הבנתי. אני מוכן." }]
+            }
+        ];
+
+        function handleChatEnter(e) {
+            if (e.key === 'Enter') {
+                sendChatMessage();
+            }
+        }
+
+        async function sendChatMessage() {
+            const text = chatInput.value.trim();
+            if (!text) return;
+
+            // Add innertext to UI to avoid XSS
+            addMessageToUI(text, 'msg-user');
+            chatInput.value = '';
+            
+            // UI loading state
+            typingIndicator.style.display = 'block';
+            chatBox.appendChild(typingIndicator); // append to bottom
+            scrollToBottom();
+
+            // Store to prompt history
+            chatHistory.push({ "role": "user", "parts": [{ "text": text }] });
+
+            chatInput.disabled = true;
+            sendBtn.disabled = true;
+
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ contents: chatHistory })
+                });
+
+                if (!response.ok) {
+                    throw new Error('API request failed with status: ' + response.status);
+                }
+
+                const data = await response.json();
+                let reply = data.candidates[0].content.parts[0].text;
+                
+                // Save model response to history
+                chatHistory.push({ "role": "model", "parts": [{ "text": reply }] });
+
+                typingIndicator.style.display = 'none';
+                
+                // Clean markdown artifacts for text-only display
+                reply = reply.replace(/\*\*/g, '').replace(/\*/g, '').trim(); 
+                addMessageToUI(reply, 'msg-ai');
+
+            } catch (error) {
+                console.error('Chat API Error:', error);
+                typingIndicator.style.display = 'none';
+                addMessageToUI('מצטער, הייתה לי שגיאה זמנית בהתחברות. נסה/י לשלוח אלינו הודעת וואטסאפ במקום! 😊', 'msg-ai');
+            }
+
+            chatInput.disabled = false;
+            sendBtn.disabled = false;
+            chatInput.focus();
+            scrollToBottom();
+        }
+
+        function addMessageToUI(text, className) {
+            const div = document.createElement('div');
+            div.className = `msg-bubble ${className}`;
+            div.innerText = text;
+            chatBox.insertBefore(div, typingIndicator);
+            scrollToBottom();
+        }
+
+        function scrollToBottom() {
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
     </script>
 
 </body>
