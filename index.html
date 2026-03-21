@@ -900,8 +900,13 @@
         }
 
         /* RTL: next (forward) is visually on the left, prev on the right */
-        .carousel-prev { right: 0; }
-        .carousel-next { left: 0; }
+        .carousel-prev {
+            right: 0;
+        }
+
+        .carousel-next {
+            left: 0;
+        }
 
         .reviews-carousel-wrapper {
             overflow: hidden;
@@ -991,7 +996,7 @@
         }
 
         .chat-container {
-            background: linear-gradient(145deg, rgba(30,34,53,0.95), rgba(15,17,26,0.98));
+            background: linear-gradient(145deg, rgba(30, 34, 53, 0.95), rgba(15, 17, 26, 0.98));
             border-radius: 20px;
             border: 1px solid rgba(0, 240, 255, 0.2);
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(0, 240, 255, 0.05);
@@ -1030,9 +1035,20 @@
         }
 
         @keyframes pulse {
-            0%   { transform: scale(0.9); box-shadow: 0 0 10px rgba(0,240,255,0.7); }
-            50%  { transform: scale(1.1); box-shadow: 0 0 20px rgba(0,240,255,1); }
-            100% { transform: scale(0.9); box-shadow: 0 0 10px rgba(0,240,255,0.7); }
+            0% {
+                transform: scale(0.9);
+                box-shadow: 0 0 10px rgba(0, 240, 255, 0.7);
+            }
+
+            50% {
+                transform: scale(1.1);
+                box-shadow: 0 0 20px rgba(0, 240, 255, 1);
+            }
+
+            100% {
+                transform: scale(0.9);
+                box-shadow: 0 0 10px rgba(0, 240, 255, 0.7);
+            }
         }
 
         .chat-box {
@@ -1044,13 +1060,15 @@
             gap: 15px;
             scroll-behavior: smooth;
         }
-        
+
         .chat-box::-webkit-scrollbar {
             width: 8px;
         }
+
         .chat-box::-webkit-scrollbar-track {
-            background: rgba(255,255,255,0.05);
+            background: rgba(255, 255, 255, 0.05);
         }
+
         .chat-box::-webkit-scrollbar-thumb {
             background: rgba(0, 240, 255, 0.3);
             border-radius: 10px;
@@ -1068,7 +1086,10 @@
         }
 
         @keyframes popIn {
-            to { opacity: 1; transform: translateY(0); }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .msg-ai {
@@ -1092,7 +1113,7 @@
             display: flex;
             padding: 15px;
             background: rgba(15, 17, 26, 0.9);
-            border-top: 1px solid rgba(255,255,255,0.05);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .chat-input {
@@ -1133,7 +1154,7 @@
             transform: scale(1.05);
             box-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
         }
-        
+
         .chat-send-btn:disabled {
             opacity: 0.5;
             cursor: not-allowed;
@@ -1145,23 +1166,37 @@
             display: none;
             align-self: flex-start;
             padding: 10px 15px;
-            background: rgba(255,255,255,0.05);
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 20px;
             border-bottom-right-radius: 5px;
             color: #a0aab2;
             font-size: 0.9rem;
         }
-        
+
         .typing-indicator span {
             display: inline-block;
             animation: bounce 1.4s infinite ease-in-out both;
         }
-        .typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
-        .typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
+
+        .typing-indicator span:nth-child(1) {
+            animation-delay: -0.32s;
+        }
+
+        .typing-indicator span:nth-child(2) {
+            animation-delay: -0.16s;
+        }
 
         @keyframes bounce {
-            0%, 80%, 100% { transform: scale(0); }
-            40% { transform: scale(1); }
+
+            0%,
+            80%,
+            100% {
+                transform: scale(0);
+            }
+
+            40% {
+                transform: scale(1);
+            }
         }
     </style>
 </head>
@@ -1321,17 +1356,20 @@
                 <div class="reviews-grid" id="reviewsTrack">
                     <div class="review-card">
                         <div class="review-stars">★★★★★</div>
-                        <p class="review-text">"תודה רבה. החוג היה מצוין ונהניתי מאוד, למדתי המון דברים חדשים ואני בטוח שאשתמש בהם."</p>
+                        <p class="review-text">"תודה רבה. החוג היה מצוין ונהניתי מאוד, למדתי המון דברים חדשים ואני בטוח
+                            שאשתמש בהם."</p>
                         <div class="review-author">— הורה של תלמיד</div>
                     </div>
                     <div class="review-card">
                         <div class="review-stars">★★★★★</div>
-                        <p class="review-text">"היי אופק, מאוד לא מובן מאליו שבני נהנה בקורס שלך. תודה רבה רבה, הקורס היה מעולה!"</p>
+                        <p class="review-text">"היי אופק, מאוד לא מובן מאליו שבני נהנה בקורס שלך. תודה רבה רבה, הקורס
+                            היה מעולה!"</p>
                         <div class="review-author">— אמא של בן 10</div>
                     </div>
                     <div class="review-card">
                         <div class="review-stars">★★★★★</div>
-                        <p class="review-text">"היי אופק, תודה רבה על הקורס. היה לילדי מאוד מעניין וגם אני צפיתי מהצד והתעניינתי :), בהצלחה ונשמח להירשם לעוד קורסים בעתיד."</p>
+                        <p class="review-text">"היי אופק, תודה רבה על הקורס. היה לילדי מאוד מעניין וגם אני צפיתי מהצד
+                            והתעניינתי :), בהצלחה ונשמח להירשם לעוד קורסים בעתיד."</p>
                         <div class="review-author">— אבא של בת 9</div>
                     </div>
                     <div class="review-card">
@@ -1341,17 +1379,20 @@
                     </div>
                     <div class="review-card">
                         <div class="review-stars">★★★★★</div>
-                        <p class="review-text">"שילוב המיינקראפט עם הבינה המלאכותית היה גאוני! הבת שלי דיברה על זה כל השבוע אחרי הקורס. מדהים!"</p>
+                        <p class="review-text">"שילוב המיינקראפט עם הבינה המלאכותית היה גאוני! הבת שלי דיברה על זה כל
+                            השבוע אחרי הקורס. מדהים!"</p>
                         <div class="review-author">— אמא של בת 10</div>
                     </div>
                     <div class="review-card">
                         <div class="review-stars">★★★★★</div>
-                        <p class="review-text">"מה שהפתיע אותי ביותר זו הסבלנות ודרך ההסבר של המדריכים. כל ילד קיבל תשומת לב אישית, והרגשנו שבן שלנו בידיים טובות."</p>
+                        <p class="review-text">"מה שהפתיע אותי ביותר זו הסבלנות ודרך ההסבר של המדריכים. כל ילד קיבל
+                            תשומת לב אישית, והרגשנו שבן שלנו בידיים טובות."</p>
                         <div class="review-author">— הורה מרוצה</div>
                     </div>
                     <div class="review-card">
                         <div class="review-stars">★★★★★</div>
-                        <p class="review-text">"הרשמנו את הילד בהיסוס כי לא ידענו אם יתמיד, אבל הוא כבר מבקש להירשם לקורס הבא! ממליצים בחום."</p>
+                        <p class="review-text">"הרשמנו את הילד בהיסוס כי לא ידענו אם יתמיד, אבל הוא כבר מבקש להירשם
+                            לקורס הבא! ממליצים בחום."</p>
                         <div class="review-author">— משפחת כהן</div>
                     </div>
                 </div>
@@ -1414,18 +1455,21 @@
                 <div class="pulse-dot"></div>
                 <h3>העוזר החכם העוזר החכם של TechKids</h3>
             </div>
-            
+
             <div class="chat-box" id="chatBox">
-                <div class="msg-bubble msg-ai">שלום! אני העוזר הווירטואלי של קייטנת TechKids. אפשר לשאול אותי על החוגים, שעות הפעילות, מחירים, או תכנים. במה אוכל לעזור? 🤖</div>
+                <div class="msg-bubble msg-ai">שלום! אני העוזר הווירטואלי של קייטנת TechKids. אפשר לשאול אותי על החוגים,
+                    שעות הפעילות, מחירים, או תכנים. במה אוכל לעזור? 🤖</div>
                 <div class="typing-indicator" id="typingIndicator">
                     מקליד <span>.</span><span>.</span><span>.</span>
                 </div>
             </div>
 
             <div class="chat-input-area">
-                <input type="text" id="chatInput" class="chat-input" placeholder="הקלד/י שאלה כאן..." autocomplete="off" onkeypress="handleChatEnter(event)">
+                <input type="text" id="chatInput" class="chat-input" placeholder="הקלד/י שאלה כאן..." autocomplete="off"
+                    onkeypress="handleChatEnter(event)">
                 <button class="chat-send-btn" id="chatSendBtn" onclick="sendChatMessage()" aria-label="שלח הודעה">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <line x1="22" y1="2" x2="11" y2="13"></line>
                         <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
                     </svg>
@@ -1570,7 +1614,7 @@
 
             track.addEventListener('transitionend', function () {
                 isTransitioning = false;
-                
+
                 if (currentIndex >= total * 2) {
                     currentIndex = currentIndex - total;
                     setPosition(currentIndex, false);
@@ -1609,8 +1653,8 @@
 
             wrapper.addEventListener('mouseenter', stopAuto);
             wrapper.addEventListener('mouseleave', startAuto);
-            
-            window.addEventListener('resize', function() {
+
+            window.addEventListener('resize', function () {
                 track.style.transition = 'none';
                 setPosition(currentIndex, false);
             });
@@ -1620,8 +1664,8 @@
 
         // --- AI Chat Logic (Gemini API) ---
         const API_KEY = "AIzaSyDlcOBPGy4Zwh9m7BYpf-Kg9r4uWLD0txk";
-        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`;
-        
+        const API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=' + API_KEY;
+
         const chatBox = document.getElementById('chatBox');
         const chatInput = document.getElementById('chatInput');
         const typingIndicator = document.getElementById('typingIndicator');
@@ -1651,7 +1695,7 @@
             // Add innertext to UI to avoid XSS
             addMessageToUI(text, 'msg-user');
             chatInput.value = '';
-            
+
             // UI loading state
             typingIndicator.style.display = 'block';
             chatBox.appendChild(typingIndicator); // append to bottom
@@ -1676,14 +1720,14 @@
 
                 const data = await response.json();
                 let reply = data.candidates[0].content.parts[0].text;
-                
+
                 // Save model response to history
                 chatHistory.push({ "role": "model", "parts": [{ "text": reply }] });
 
                 typingIndicator.style.display = 'none';
-                
+
                 // Clean markdown artifacts for text-only display
-                reply = reply.replace(/\*\*/g, '').replace(/\*/g, '').trim(); 
+                reply = reply.replace(/\*\*/g, '').replace(/\*/g, '').trim();
                 addMessageToUI(reply, 'msg-ai');
 
             } catch (error) {
