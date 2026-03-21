@@ -858,21 +858,21 @@
 
             /* --- Mobile Carousel Fixes --- */
             .reviews-carousel-outer {
-                padding: 0;
-                padding-bottom: 60px; /* Space for the arrows underneath */
+                padding: 0 45px; /* Exact space for arrows */
+                padding-bottom: 0; 
             }
 
             .reviews-carousel-wrapper::before,
             .reviews-carousel-wrapper::after {
-                width: 15px; /* Minimal gradient on mobile to avoid covering text */
+                width: 15px; 
             }
 
             .review-card {
-                flex: 0 0 85vw; /* Native feeling sizing for mobile slider */
-                width: 85vw;
-                max-width: 320px;
-                padding: 20px;
-                margin: 0 auto; 
+                flex: 0 0 calc(100vw - 90px); 
+                width: calc(100vw - 90px);
+                max-width: 250px; /* Safety */
+                padding: 20px 15px;
+                margin: 0; 
                 box-sizing: border-box;
             }
             
@@ -881,24 +881,23 @@
             }
 
             .carousel-arrow {
-                top: auto;
-                bottom: 0;
-                transform: none; /* remove exact Y translation */
-                width: 44px;
-                height: 44px;
-                font-size: 1.5rem;
+                top: 50%;
+                bottom: auto;
+                transform: translateY(-50%); 
+                width: 38px;
+                height: 38px;
+                font-size: 1.2rem;
                 background: rgba(0, 240, 255, 0.12);
             }
 
-            /* Place arrows side by side at the bottom center */
             .carousel-prev {
-                right: auto;
-                left: calc(50% + 10px); /* Physically on the right */
+                right: 3px;
+                left: auto; 
             }
 
             .carousel-next {
-                left: auto;
-                right: calc(50% + 10px); /* Physically on the left */
+                left: 3px;
+                right: auto;
             }
         }
 
@@ -1269,6 +1268,7 @@
             <li><a href="#minecraft">מיינקראפט</a></li>
             <li><a href="#pricing">מחירים</a></li>
             <li><a href="#instructors">המדריכים</a></li>
+            <li><a href="#ai-chat">העוזר החכם 🤖</a></li>
             <li><a href="#contact">צור קשר</a></li>
         </ul>
     </nav>
@@ -1289,6 +1289,8 @@
                 <button class="btn-small mc-btn"
                     onclick="document.getElementById('minecraft').scrollIntoView({behavior: 'smooth'});">למסלול
                     מיינקראפט ↓</button>
+                <button class="btn-small" style="background: rgba(0, 240, 255, 0.2); border: 1px solid var(--ai-blue); color: #fff;"
+                    onclick="document.getElementById('ai-chat').scrollIntoView({behavior: 'smooth'});">העוזר החכם 🤖</button>
             </div>
         </div>
     </header>
@@ -1648,15 +1650,19 @@
             let autoTimer = null;
             let isTransitioning = false;
 
-            function getCardWidth() {
-                return track.children[0].getBoundingClientRect().width + GAP;
-            }
-
             function setPosition(index, animate) {
-                // In RTL, translating positively moves tracking to the right, showing the next set of cards visually to the left.
-                const offset = index * getCardWidth();
+                const cardNode = track.children[0];
+                const cardW = cardNode.getBoundingClientRect().width;
+                const fullCardW = cardW + GAP;
+                
+                const wrapperW = wrapper.getBoundingClientRect().width;
+                const centerOffset = (wrapperW - cardW) / 2;
+
+                const baseOffset = index * fullCardW;
+                const finalOffset = baseOffset - centerOffset;
+
                 track.style.transition = animate ? 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)' : 'none';
-                track.style.transform = `translateX(${offset}px)`;
+                track.style.transform = `translateX(${finalOffset}px)`;
             }
 
             setPosition(currentIndex, false);
