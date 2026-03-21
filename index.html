@@ -852,49 +852,39 @@
                 width: 100%;
             }
 
-            /* --- Mobile Carousel Fixes --- */
-            .reviews-carousel-outer {
-                padding: 0 44px; /* exact space for the arrow buttons */
-            }
+            /* === Mobile Carousel: Use native CSS scroll-snap, skip JS === */
+            .carousel-arrow { display: none; }
 
-            /* Completely hide the fade gradients on mobile - they cover text */
+            .reviews-carousel-outer { padding: 0; }
+
             .reviews-carousel-wrapper::before,
-            .reviews-carousel-wrapper::after {
-                display: none;
+            .reviews-carousel-wrapper::after { display: none; }
+
+            /* Native scroll-snap - always works, no math needed */
+            .reviews-carousel-wrapper {
+                overflow-x: auto;
+                overflow-y: hidden;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+            }
+            .reviews-carousel-wrapper::-webkit-scrollbar { display: none; }
+
+            /* JS is skipped on mobile, so reset transform that JS would have set */
+            .reviews-grid {
+                transform: none !important;
+                transition: none !important;
+                padding: 0 10vw;
+                gap: 15px;
             }
 
             .review-card {
-                /* Card fills the space between the two arrows */
-                flex: 0 0 calc(100vw - 96px);
-                width: calc(100vw - 96px);
-                padding: 20px 15px;
+                flex: 0 0 80vw;
+                width: 80vw;
+                max-width: 340px;
+                scroll-snap-align: center;
+                padding: 22px 18px;
                 box-sizing: border-box;
-                white-space: normal;
-            }
-
-            .review-card .review-text {
-                font-size: 0.95rem;
-            }
-
-            .carousel-arrow {
-                top: 50%;
-                bottom: auto;
-                transform: translateY(-50%);
-                width: 40px;
-                height: 40px;
-                font-size: 1.3rem;
-                background: rgba(0, 240, 255, 0.15);
-            }
-
-            /* RTL: prev is on the right side of outer container, next on the left */
-            .carousel-prev {
-                right: 2px;
-                left: auto;
-            }
-
-            .carousel-next {
-                left: 2px;
-                right: auto;
             }
         }
 
@@ -1618,10 +1608,12 @@
 
             document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
         });
-        // Reviews Infinite Carousel with Arrows
+        // Reviews Infinite Carousel with Arrows (desktop only - mobile uses CSS scroll-snap)
         (function () {
             const track = document.getElementById('reviewsTrack');
             if (!track) return;
+            // On mobile, CSS scroll-snap handles it naturally — skip all JS
+            if (window.innerWidth <= 768) return;
             const wrapper = track.parentElement;
             const GAP = 25;
             const AUTO_DELAY = 4000;
